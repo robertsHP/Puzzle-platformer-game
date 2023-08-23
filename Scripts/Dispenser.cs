@@ -1,9 +1,8 @@
 using Godot;
 using System;
 
-public partial class Dispenser : Trap
-{
-	[Export] public Bullet bullet;
+public partial class Dispenser : Trap {
+	[Export] public PackedScene bulletPackedScene;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
@@ -18,8 +17,7 @@ public partial class Dispenser : Trap
 		
 	}
 	public void _on_timer_timeout () {
-		GD.Print("Gamer");
-		Bullet newBullet = (Bullet) bullet.Duplicate();
-		newBullet.Launched = true;
+		if(GameScene.Instance.CurrentState == GameScene.State.DEFAULT)
+			Global.LoadPackedScene(this, bulletPackedScene);
 	}
 }

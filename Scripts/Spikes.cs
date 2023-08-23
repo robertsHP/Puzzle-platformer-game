@@ -8,16 +8,16 @@ public partial class Spikes : Trap
 	[Export] public AnimationPlayer animationPlayer;
 	[Export] public bool TurnedOnWhenGameLaunched;
 
-    private bool on;
-    public bool On {
-        get { 
-            return on;
-        }
-        set { 
-            animationPlayer.Play(value ? "On" : "Off");
+	private bool on;
+	public bool On {
+		get { 
+			return on;
+		}
+		set { 
+			animationPlayer.Play(value ? "On" : "Off");
 			on = value;
-        }
-    }
+		}
+	}
 	public override void _Ready () {
 		On = TurnedOnWhenGameLaunched;
 	}
@@ -28,12 +28,12 @@ public partial class Spikes : Trap
 	}
 
 	public override void Trigger () {
-		on = !on;
-		animationPlayer.Play(on ? "On" : "Off");
+		On = !On;
+		animationPlayer.Play(On ? "On" : "Off");
 	}
 
 	public void _on_body_entered (Node2D node) {
-		if (node.GetType() == typeof(Player)) {
+		if (node is Player) {
 			if(On) {
 				Player player = (Player) node;
 				player.Kill();

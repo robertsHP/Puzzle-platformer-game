@@ -15,9 +15,13 @@ public partial class PressurePad : Area2D
 		}
 	}
 	public void _on_body_entered (Node2D node) {
-		TriggerTraps();
+		if (node is CharacterBody2D) {
+			TriggerTraps();
+		}
 	}
 	public void _on_body_exited (Node2D node) {
-		TriggerTraps();
+		if (node is CharacterBody2D) {
+			TriggerTraps();
+		}
 	}
 }

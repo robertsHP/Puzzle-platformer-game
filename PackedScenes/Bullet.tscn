@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://blvseb2oei2ol"]
+[gd_scene load_steps=4 format=3 uid="uid://c80kimfhi26kf"]
 
 [ext_resource type="Script" path="res://Scripts/Bullet.cs" id="1_rw6d8"]
 [ext_resource type="Texture2D" uid="uid://blxm5kch28nlf" path="res://Textures/bullet.png" id="2_clint"]
@@ -16,5 +16,4 @@ texture = ExtResource("2_clint")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_anhx6")
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

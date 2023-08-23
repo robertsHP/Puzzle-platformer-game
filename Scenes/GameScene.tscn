@@ -1,16 +1,14 @@
-[gd_scene load_steps=26 format=3 uid="uid://mwrpir3iq44x"]
+[gd_scene load_steps=18 format=3 uid="uid://mwrpir3iq44x"]
 
+[ext_resource type="Script" path="res://Scripts/GameScene.cs" id="1_pjalo"]
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_t21fk"]
 [ext_resource type="Texture2D" uid="uid://d1eby0qe0i5gq" path="res://Textures/tiles.png" id="1_vnr6b"]
 [ext_resource type="Script" path="res://Scripts/MainCamera.cs" id="2_0knap"]
 [ext_resource type="Texture2D" uid="uid://b3epyl3kv67rq" path="res://Textures/player.png" id="3_nifam"]
-[ext_resource type="Texture2D" uid="uid://cm5xq7nm0ath1" path="res://Textures/spikes.png" id="5_42h76"]
-[ext_resource type="Script" path="res://Scripts/Spikes.cs" id="6_72b0h"]
-[ext_resource type="Script" path="res://Scripts/PressurePad.cs" id="7_hc2j1"]
-[ext_resource type="Texture2D" uid="uid://bybs3o5c5flor" path="res://Textures/pressure_pad.png" id="7_kqmd6"]
-[ext_resource type="Texture2D" uid="uid://dh38af0o0soky" path="res://Textures/dispenser.png" id="9_5wkh5"]
-[ext_resource type="Script" path="res://Scripts/Dispenser.cs" id="9_xpgak"]
-[ext_resource type="PackedScene" uid="uid://blvseb2oei2ol" path="res://Nodes/bullet.tscn" id="10_kr21b"]
+[ext_resource type="PackedScene" uid="uid://dh8grwhvpdu88" path="res://PackedScenes/Spikes.tscn" id="6_5rqru"]
+[ext_resource type="PackedScene" uid="uid://b5munyenbsxwt" path="res://PackedScenes/PressurePad.tscn" id="7_o0itv"]
+[ext_resource type="PackedScene" uid="uid://4evfgaljtmw4" path="res://PackedScenes/Monster.tscn" id="9_q4jrj"]
+[ext_resource type="PackedScene" uid="uid://ddg8gipdq6qiv" path="res://PackedScenes/Dispenser.tscn" id="9_y4stl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p3fgy"]
 texture = ExtResource("1_vnr6b")
@@ -129,58 +127,13 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p78jv"]
 size = Vector2(8, 15)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ly4yk"]
-size = Vector2(11, 15)
-
-[sub_resource type="Animation" id="Animation_ukoei"]
-resource_name = "Off"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [3, 2, 1, 0]
-}
-
-[sub_resource type="Animation" id="Animation_dq3xm"]
-resource_name = "On"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_g567q"]
-_data = {
-"Off": SubResource("Animation_ukoei"),
-"On": SubResource("Animation_dq3xm")
-}
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_38hbv"]
-size = Vector2(14, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ydb0"]
-size = Vector2(16, 16)
-
 [node name="GameScene" type="Node2D"]
+script = ExtResource("1_pjalo")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_va231")
 format = 2
-layer_0/tile_data = PackedInt32Array(0, 1, 0, 65536, 1, 0, 131072, 1, 0, 196608, 1, 0, 262144, 1, 0, 327680, 1, 0, 393216, 1, 0, 458752, 1, 0, 524288, 1, 0, 589824, 1, 0, 655360, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 1572888, 1, 0, 1572887, 1, 0, 1572886, 1, 0, 1572885, 1, 0, 1572884, 1, 0, 1572883, 1, 0, 1572882, 1, 0, 1572881, 1, 0, 1572880, 1, 0, 1572879, 1, 0, 1572878, 1, 0, 1572877, 1, 0, 1572876, 1, 0, 1572875, 1, 0, 1572874, 1, 0, 1572873, 1, 0, 1572872, 1, 0, 1572871, 1, 0, 1572870, 1, 0, 1572869, 1, 0, 1572868, 1, 0, 1572867, 1, 0, 1572866, 1, 0, 1572865, 1, 0, 1572864, 1, 0, 1507328, 1, 0, 1441792, 1, 0, 1376256, 1, 0, 1310720, 1, 0, 1245184, 1, 0, 1179648, 1, 0, 1114112, 1, 0, 1048576, 1, 0, 983040, 1, 0, 917504, 1, 0, 851968, 1, 0, 786432, 1, 0, 720896, 1, 0, 18, 1, 0, 19, 1, 0, 20, 1, 0, 21, 1, 0, 22, 1, 0, 23, 1, 0, 24, 1, 0, 65560, 1, 0, 131096, 1, 0, 196632, 1, 0, 262168, 1, 0, 327704, 1, 0, 393240, 1, 0, 458776, 1, 0, 524312, 1, 0, 589848, 1, 0, 655384, 1, 0, 720920, 1, 0, 786456, 1, 0, 851992, 1, 0, 917528, 1, 0, 983064, 1, 0, 1048600, 1, 0, 1114136, 1, 0, 1179672, 1, 0, 1245208, 1, 0, 1310744, 1, 0, 1376280, 1, 0, 1441816, 1, 0, 1507352, 1, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 262146, 65537, 0, 262147, 65537, 0, 262148, 65537, 0, 262149, 65537, 0, 262150, 65537, 0, 196614, 65537, 0, 196609, 1, 1, 196610, 1, 1, 196611, 1, 1, 131078, 65537, 1, 65542, 65537, 1, 65543, 65537, 1, 131079, 65537, 1, 196615, 65537, 0, 262151, 65537, 0, 262152, 65537, 0, 196616, 65537, 0, 196617, 65537, 0, 262153, 65537, 0)
+layer_0/tile_data = PackedInt32Array(0, 1, 0, 65536, 1, 0, 131072, 1, 0, 196608, 1, 0, 262144, 1, 0, 327680, 1, 0, 393216, 1, 0, 458752, 1, 0, 524288, 1, 0, 589824, 1, 0, 655360, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 1572888, 1, 0, 1572887, 1, 0, 1572886, 1, 0, 1572885, 1, 0, 1572884, 1, 0, 1572883, 1, 0, 1572882, 1, 0, 1572881, 1, 0, 1572880, 1, 0, 1572879, 1, 0, 1572878, 1, 0, 1572877, 1, 0, 1572876, 1, 0, 1572875, 1, 0, 1572874, 1, 0, 1572873, 1, 0, 1572872, 1, 0, 1572871, 1, 0, 1572870, 1, 0, 1572869, 1, 0, 1572868, 1, 0, 1572867, 1, 0, 1572866, 1, 0, 1572865, 1, 0, 1572864, 1, 0, 1507328, 1, 0, 1441792, 1, 0, 1376256, 1, 0, 1310720, 1, 0, 1245184, 1, 0, 1179648, 1, 0, 1114112, 1, 0, 1048576, 1, 0, 983040, 1, 0, 917504, 1, 0, 851968, 1, 0, 786432, 1, 0, 720896, 1, 0, 18, 1, 0, 19, 1, 0, 20, 1, 0, 21, 1, 0, 22, 1, 0, 23, 1, 0, 24, 1, 0, 65560, 1, 0, 131096, 1, 0, 196632, 1, 0, 262168, 1, 0, 327704, 1, 0, 393240, 1, 0, 458776, 1, 0, 524312, 1, 0, 589848, 1, 0, 655384, 1, 0, 720920, 1, 0, 786456, 1, 0, 851992, 1, 0, 917528, 1, 0, 983064, 1, 0, 1048600, 1, 0, 1114136, 1, 0, 1179672, 1, 0, 1245208, 1, 0, 1310744, 1, 0, 1376280, 1, 0, 1441816, 1, 0, 1507352, 1, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 262146, 65537, 0, 262147, 65537, 0, 262148, 65537, 0, 262149, 65537, 0, 262150, 65537, 0, 196614, 65537, 0, 196609, 1, 1, 196610, 1, 1, 196611, 1, 1, 131078, 65537, 1, 65542, 65537, 1, 65543, 65537, 1, 131079, 65537, 1, 196615, 65537, 0, 262151, 65537, 0, 262152, 65537, 0, 196616, 65537, 0, 196617, 65537, 0, 262153, 65537, 0, 131080, 65537, 0)
 
 [node name="MainCamera" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 position = Vector2(272, 320)
@@ -204,6 +157,7 @@ JumpVelocity = -100.0
 texture = ExtResource("3_nifam")
 hframes = 5
 vframes = 2
+frame = 5
 
 [node name="Animations" type="AnimationPlayer" parent="Player/Sprite2D"]
 root_node = NodePath("../..")
@@ -211,83 +165,17 @@ libraries = {
 "": SubResource("AnimationLibrary_cnyf2")
 }
 
-[node name="StandCollisionShape" type="CollisionShape2D" parent="Player"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_p78jv")
 
-[node name="Spike2" type="Area2D" parent="." node_paths=PackedStringArray("sprite", "animationPlayer")]
-position = Vector2(86, 92)
-script = ExtResource("6_72b0h")
-sprite = NodePath("../Spike/Sprite2D")
-animationPlayer = NodePath("../Spike/Sprite2D/AnimationPlayer")
+[node name="Spikes" parent="." instance=ExtResource("6_5rqru")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spike2"]
-position = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_ly4yk")
+[node name="PressurePad" parent="." node_paths=PackedStringArray("traps") instance=ExtResource("7_o0itv")]
+traps = [null]
 
-[node name="Sprite2D" type="Sprite2D" parent="Spike2"]
-texture = ExtResource("5_42h76")
-hframes = 4
-frame = 3
+[node name="Dispenser" parent="." instance=ExtResource("9_y4stl")]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Spike2/Sprite2D"]
-libraries = {
-"": SubResource("AnimationLibrary_g567q")
-}
-
-[node name="Spike" type="Area2D" parent="." node_paths=PackedStringArray("sprite", "animationPlayer")]
-position = Vector2(40, 56)
-script = ExtResource("6_72b0h")
-sprite = NodePath("Sprite2D")
-animationPlayer = NodePath("Sprite2D/AnimationPlayer")
-TurnedOnWhenGameLaunched = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spike"]
-position = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_ly4yk")
-
-[node name="Sprite2D" type="Sprite2D" parent="Spike"]
-texture = ExtResource("5_42h76")
-hframes = 4
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Spike/Sprite2D"]
-libraries = {
-"": SubResource("AnimationLibrary_g567q")
-}
-
-[node name="PressurePad" type="Area2D" parent="." node_paths=PackedStringArray("traps")]
-position = Vector2(56, 56)
-script = ExtResource("7_hc2j1")
-traps = [NodePath("../Spike")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PressurePad"]
-position = Vector2(0, 7.5)
-shape = SubResource("RectangleShape2D_38hbv")
-
-[node name="Sprite2D" type="Sprite2D" parent="PressurePad"]
-texture = ExtResource("7_kqmd6")
-hframes = 2
-
-[node name="Dispenser" type="Area2D" parent="." node_paths=PackedStringArray("bullet")]
-position = Vector2(168, 40)
-rotation = 1.57079
-script = ExtResource("9_xpgak")
-bullet = NodePath("Bullet")
-
-[node name="Bullet" parent="Dispenser" instance=ExtResource("10_kr21b")]
-
-[node name="Timer" type="Timer" parent="Dispenser"]
-autostart = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Dispenser"]
-visible = false
-texture = ExtResource("9_5wkh5")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Dispenser"]
-shape = SubResource("RectangleShape2D_4ydb0")
-
-[connection signal="body_entered" from="Spike2" to="Spike2" method="_on_body_entered"]
-[connection signal="body_entered" from="Spike" to="Spike" method="_on_body_entered"]
-[connection signal="body_entered" from="PressurePad" to="PressurePad" method="_on_body_entered"]
-[connection signal="body_exited" from="PressurePad" to="PressurePad" method="_on_body_exited"]
-[connection signal="timeout" from="Dispenser/Timer" to="Dispenser" method="_on_timer_timeout"]
+[node name="Monster" parent="." instance=ExtResource("9_q4jrj")]
+position = Vector2(80, 39)
+direction = 0

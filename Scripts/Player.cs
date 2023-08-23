@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Player : Godot.CharacterBody2D
+public partial class Player : CharacterBody2D
 {
 	[Export] public Sprite2D sprite;
 	[Export] public AnimationPlayer animationPlayer;
@@ -18,7 +18,7 @@ public partial class Player : Godot.CharacterBody2D
 	}
 	public override void _PhysicsProcess(double delta)
 	{
-		if(!dead) {
+		if(GameScene.Instance.CurrentState == GameScene.State.DEFAULT) {
 			Velocity = Movement(delta, Velocity);
 			MoveAndSlide();
 		}
@@ -58,7 +58,7 @@ public partial class Player : Godot.CharacterBody2D
 		return velocity;
 	}
 	public void Kill () {
-		dead = true;
+		GameScene.Instance.CurrentState = GameScene.State.GAMEOVER;
 		animationPlayer.Play("death");
 	}
 }
