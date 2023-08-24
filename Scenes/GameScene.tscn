@@ -1,15 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://mwrpir3iq44x"]
+[gd_scene load_steps=12 format=3 uid="uid://mwrpir3iq44x"]
 
 [ext_resource type="Script" path="res://Scripts/GameScene.cs" id="1_pjalo"]
 [ext_resource type="Texture2D" uid="uid://d1eby0qe0i5gq" path="res://Textures/tiles.png" id="1_vnr6b"]
 [ext_resource type="Script" path="res://Scripts/MainCamera.cs" id="2_0knap"]
-[ext_resource type="PackedScene" uid="uid://bo3gvuw3bhwe" path="res://PackedScenes/button.tscn" id="4_vep0h"]
+[ext_resource type="Texture2D" uid="uid://qy0y5og0yij6" path="res://Textures/ball.png" id="5_3r0ed"]
+[ext_resource type="Script" path="res://Scripts/Ball.cs" id="5_22fgb"]
 [ext_resource type="PackedScene" uid="uid://g5rsj5pg8rnp" path="res://PackedScenes/player.tscn" id="5_oyhtc"]
-[ext_resource type="PackedScene" uid="uid://v531ldcpaj6q" path="res://PackedScenes/lava.tscn" id="6_fxc4w"]
-[ext_resource type="PackedScene" uid="uid://dp2yh0v73kix3" path="res://PackedScenes/green_monster.tscn" id="7_j33uu"]
-[ext_resource type="PackedScene" uid="uid://che60jtsgxnse" path="res://PackedScenes/door.tscn" id="8_p48w5"]
-[ext_resource type="PackedScene" uid="uid://bib2vir701pva" path="res://PackedScenes/dispenser.tscn" id="9_2knan"]
-[ext_resource type="PackedScene" uid="uid://5cdl1h6mhvql" path="res://PackedScenes/trap_timer.tscn" id="10_i7rp8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p3fgy"]
 texture = ExtResource("1_vnr6b")
@@ -75,6 +71,15 @@ physics_layer_1/collision_layer = 0
 physics_layer_1/collision_mask = 0
 sources/1 = SubResource("TileSetAtlasSource_p3fgy")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_x0h3k"]
+radius = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_daj0a"]
+size = Vector2(9, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5wmyw"]
+size = Vector2(9, 16)
+
 [node name="GameScene" type="Node2D" node_paths=PackedStringArray("tileMap", "player")]
 script = ExtResource("1_pjalo")
 tileMap = NodePath("TileMap")
@@ -83,11 +88,9 @@ player = NodePath("Player")
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_va231")
 format = 2
-layer_0/tile_data = PackedInt32Array(0, 1, 0, 65536, 1, 0, 131072, 1, 0, 196608, 1, 0, 262144, 1, 0, 327680, 1, 0, 393216, 1, 0, 458752, 1, 0, 524288, 1, 0, 589824, 1, 0, 655360, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 1572888, 1, 0, 1572887, 1, 0, 1572886, 1, 0, 1572885, 1, 0, 1572884, 1, 0, 1572883, 1, 0, 1572882, 1, 0, 1572881, 1, 0, 1572880, 1, 0, 1572879, 1, 0, 1572878, 1, 0, 1572877, 1, 0, 1572876, 1, 0, 1572875, 1, 0, 1572874, 1, 0, 1572873, 1, 0, 1572872, 1, 0, 1572871, 1, 0, 1572870, 1, 0, 1572869, 1, 0, 1572868, 1, 0, 1572867, 1, 0, 1572866, 1, 0, 1572865, 1, 0, 1572864, 1, 0, 1507328, 1, 0, 1441792, 1, 0, 1376256, 1, 0, 1310720, 1, 0, 1245184, 1, 0, 1179648, 1, 0, 1114112, 1, 0, 1048576, 1, 0, 983040, 1, 0, 917504, 1, 0, 851968, 1, 0, 786432, 1, 0, 720896, 1, 0, 18, 1, 0, 19, 1, 0, 20, 1, 0, 21, 1, 0, 22, 1, 0, 23, 1, 0, 24, 1, 0, 65560, 1, 0, 131096, 1, 0, 196632, 1, 0, 262168, 1, 0, 327704, 1, 0, 393240, 1, 0, 458776, 1, 0, 524312, 1, 0, 589848, 1, 0, 655384, 1, 0, 720920, 1, 0, 786456, 1, 0, 851992, 1, 0, 917528, 1, 0, 983064, 1, 0, 1048600, 1, 0, 1114136, 1, 0, 1179672, 1, 0, 1245208, 1, 0, 1310744, 1, 0, 1376280, 1, 0, 1441816, 1, 0, 1507352, 1, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 262146, 65537, 0, 262147, 65537, 0, 262148, 65537, 0, 262149, 65537, 0, 262150, 65537, 0, 196614, 65537, 0, 196609, 65537, 1, 196610, 196609, 1, 196611, 196609, 1, 131078, 65537, 1, 65542, 65537, 1, 65543, 65537, 1, 131079, 65537, 1, 196615, 262145, 0, 196616, 262145, 0, 196617, 262145, 0, 327686, 196609, 1, 327685, 196609, 1, 327684, 196609, 1, 327683, 196609, 1, 327682, 196609, 1, 393220, 196609, 1, 458756, 196609, 1, 524292, 196609, 1, 589828, 196609, 1, 655361, 65537, 0, 655362, 65537, 0, 655363, 65537, 0, 655364, 65537, 0, 655365, 65537, 0, 393218, 65537, 1, 458754, 65537, 1, 524290, 65537, 1, 589826, 65537, 1, 589827, 65537, 1, 524291, 65537, 1, 458755, 65537, 1, 393219, 65537, 1, 262145, 65537, 1, 327681, 65537, 1, 393217, 65537, 1, 458753, 65537, 1, 524289, 65537, 1, 589825, 65537, 1, 393221, 65537, 1, 458757, 65537, 1, 524293, 65537, 1, 589829, 65537, 1, 589830, 65537, 1, 524294, 65537, 1, 458758, 65537, 1, 393222, 65537, 1, 262152, 196609, 0, 327688, 196609, 0, 393224, 196609, 0, 458760, 196609, 0, 524296, 196609, 0, 589832, 196609, 0, 655367, 65537, 0, 655368, 65537, 0, 655369, 65537, 0, 786439, 65537, 0, 786438, 65537, 0, 720897, 65537, 0, 786437, 65537, 0, 786435, 65537, 0, 786433, 65537, 0, 917505, 65537, 0, 851969, 65537, 0, 917506, 65537, 0, 917507, 65537, 0, 917508, 65537, 0, 917509, 65537, 0, 917510, 65537, 0, 262154, 65537, 0, 262155, 65537, 0, 327691, 65537, 0, 327690, 65537, 0, 524298, 65537, 0, 589834, 65537, 0, 589835, 65537, 0, 524299, 65537, 0, 655370, 65537, 0, 655371, 65537, 0, 327692, 65537, 0)
+layer_0/tile_data = PackedInt32Array(0, 1, 0, 65536, 1, 0, 196608, 1, 0, 262144, 1, 0, 327680, 1, 0, 393216, 1, 0, 458752, 1, 0, 524288, 1, 0, 589824, 1, 0, 655360, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 1572888, 1, 0, 1572887, 1, 0, 1572886, 1, 0, 1572885, 1, 0, 1572884, 1, 0, 1572883, 1, 0, 1572882, 1, 0, 1572881, 1, 0, 1572880, 1, 0, 1572879, 1, 0, 1572878, 1, 0, 1572877, 1, 0, 1572876, 1, 0, 1572875, 1, 0, 1572874, 1, 0, 1572873, 1, 0, 1572872, 1, 0, 1572871, 1, 0, 1572870, 1, 0, 1572869, 1, 0, 1572868, 1, 0, 1572867, 1, 0, 1572866, 1, 0, 1572865, 1, 0, 1572864, 1, 0, 1507328, 1, 0, 1441792, 1, 0, 1376256, 1, 0, 1310720, 1, 0, 1245184, 1, 0, 1179648, 1, 0, 1114112, 1, 0, 1048576, 1, 0, 983040, 1, 0, 917504, 1, 0, 851968, 1, 0, 786432, 1, 0, 18, 1, 0, 19, 1, 0, 20, 1, 0, 21, 1, 0, 22, 1, 0, 23, 1, 0, 24, 1, 0, 65560, 1, 0, 131096, 1, 0, 196632, 1, 0, 262168, 1, 0, 327704, 1, 0, 393240, 1, 0, 458776, 1, 0, 524312, 1, 0, 589848, 1, 0, 655384, 1, 0, 720920, 1, 0, 786456, 1, 0, 851992, 1, 0, 917528, 1, 0, 983064, 1, 0, 1048600, 1, 0, 1114136, 1, 0, 1179672, 1, 0, 1245208, 1, 0, 1310744, 1, 0, 1376280, 1, 0, 1441816, 1, 0, 1507352, 1, 0, 720896, 1, 0, 131072, 1, 0, 131073, 262145, 0, 131074, 262145, 0, 131075, 262145, 0, 65540, 65537, 1, 131076, 65537, 1, 196612, 65537, 1, 262148, 65537, 1, 327684, 65537, 1, 327685, 262145, 0, 327686, 262145, 0, 327687, 262145, 0, 196616, 65537, 0, 262152, 65537, 0, 327688, 65537, 0, 196617, 65537, 0, 262153, 65537, 0, 327689, 65537, 0, 327690, 65537, 0, 262154, 65537, 0, 196618, 65537, 0)
 
-[node name="Button" parent="." node_paths=PackedStringArray("traps") instance=ExtResource("4_vep0h")]
-position = Vector2(88, 56)
-traps = [null, null]
+[node name="Objects" type="Node2D" parent="."]
 
 [node name="MainCamera" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 texture_filter = 1
@@ -104,17 +107,29 @@ player = NodePath("../Player")
 [node name="Player" parent="." instance=ExtResource("5_oyhtc")]
 position = Vector2(24, 24)
 
-[node name="Lava" parent="." instance=ExtResource("6_fxc4w")]
-position = Vector2(24, 72)
+[node name="Ball" type="CharacterBody2D" parent="."]
+position = Vector2(101, 51)
+script = ExtResource("5_22fgb")
 
-[node name="GreenMonster" parent="." instance=ExtResource("7_j33uu")]
-position = Vector2(86, 29)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("CircleShape2D_x0h3k")
 
-[node name="Door" parent="." instance=ExtResource("8_p48w5")]
-position = Vector2(104, 40)
+[node name="RightArea2D" type="Area2D" parent="Ball"]
 
-[node name="Dispenser" parent="." instance=ExtResource("9_2knan")]
-position = Vector2(168, 56)
+[node name="RightCollisionShape2D" type="CollisionShape2D" parent="Ball/RightArea2D"]
+position = Vector2(4.5, 0)
+shape = SubResource("RectangleShape2D_daj0a")
 
-[node name="TrapTimer" parent="Dispenser" node_paths=PackedStringArray("trap") instance=ExtResource("10_i7rp8")]
-trap = NodePath("..")
+[node name="LeftArea2D" type="Area2D" parent="Ball"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball/LeftArea2D"]
+position = Vector2(-4.5, 0)
+shape = SubResource("RectangleShape2D_5wmyw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+texture = ExtResource("5_3r0ed")
+
+[connection signal="body_entered" from="Ball/RightArea2D" to="Ball" method="_on_right_area_2d_body_entered"]
+[connection signal="body_exited" from="Ball/RightArea2D" to="Ball" method="_on_right_area_2d_body_exited"]
+[connection signal="body_entered" from="Ball/LeftArea2D" to="Ball" method="_on_left_area_2d_body_entered"]
+[connection signal="body_exited" from="Ball/LeftArea2D" to="Ball" method="_on_left_area_2d_body_exited"]

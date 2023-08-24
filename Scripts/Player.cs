@@ -1,9 +1,7 @@
 using Godot;
 using System;
 
-public partial class Player : Creature
-{
-	[Export] public float Speed = 40.0f;
+public partial class Player : Creature {
 	[Export] public float JumpVelocity = -30.0f;
 
 	public override void _Ready () {

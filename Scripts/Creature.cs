@@ -8,6 +8,7 @@ public partial class Creature : CharacterBody2D {
 	[Export] public AnimationPlayer animationPlayer;
 	[Export] public MoveDirection moveDirection;
 	[Export] public CollisionShape2D collisionShape2D;
+	[Export] public float Speed = 40.0f;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	protected float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();

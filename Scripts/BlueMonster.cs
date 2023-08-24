@@ -1,10 +1,7 @@
 using Godot;
 using System;
 
-public partial class BlueMonster : Creature
-{
-	[Export] public float Speed = 40.0f;
-
+public partial class BlueMonster : Creature {
 	public override void _Ready () {
 		SetDirection(moveDirection);
 		animationPlayer.Play("walk");
