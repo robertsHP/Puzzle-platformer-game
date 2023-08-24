@@ -4,9 +4,8 @@ using System.Collections;
 
 public partial class Spikes : Trap
 {
-	[Export] public Sprite2D sprite;
-	[Export] public AnimationPlayer animationPlayer;
 	[Export] public bool TurnedOnWhenGameLaunched;
+	[Export] public AnimationPlayer animationPlayer;
 
 	private bool on;
 	public bool On {
@@ -18,25 +17,20 @@ public partial class Spikes : Trap
 			on = value;
 		}
 	}
+
 	public override void _Ready () {
 		On = TurnedOnWhenGameLaunched;
 	}
-	public override void _Process (double delta) {
-		if (animationPlayer.IsPlaying()) {
-
-		}
-	}
-
 	public override void Trigger () {
 		On = !On;
 		animationPlayer.Play(On ? "On" : "Off");
 	}
 
 	public void _on_body_entered (Node2D node) {
-		if (node is Player) {
+		if (node is Creature) {
 			if(On) {
-				Player player = (Player) node;
-				player.Kill();
+				Creature creature = (Creature) node;
+				creature.Kill();
 			}
 		}
 	}

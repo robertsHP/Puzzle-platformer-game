@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://x5rirpbi7s7q"]
+
+[ext_resource type="Script" path="res://Scripts/TrapDoor.cs" id="1_48yb0"]
+[ext_resource type="Texture2D" uid="uid://dxbgxya4xdqqx" path="res://Textures/trap_door.png" id="2_dfrlh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xc2mf"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygrrq"]
+size = Vector2(16, 16)
+
+[node name="TrapDoor" type="Area2D" node_paths=PackedStringArray("collisionShape", "sprite")]
+script = ExtResource("1_48yb0")
+collisionShape = NodePath("CharacterBody2D/CBCollisionShape2D")
+sprite = NodePath("CharacterBody2D/Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xc2mf")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CBCollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_ygrrq")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("2_dfrlh")
+hframes = 2

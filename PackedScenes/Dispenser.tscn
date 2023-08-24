@@ -1,25 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddg8gipdq6qiv"]
+[gd_scene load_steps=6 format=3 uid="uid://bib2vir701pva"]
 
 [ext_resource type="Script" path="res://Scripts/Dispenser.cs" id="1_vhts7"]
-[ext_resource type="PackedScene" uid="uid://c80kimfhi26kf" path="res://PackedScenes/Bullet.tscn" id="2_ngp0p"]
+[ext_resource type="PackedScene" path="res://PackedScenes/bullet.tscn" id="2_guswp"]
 [ext_resource type="Texture2D" uid="uid://dh38af0o0soky" path="res://Textures/dispenser.png" id="3_i26qc"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ydb0"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yj18c"]
 size = Vector2(16, 16)
 
-[node name="Dispenser" type="Area2D"]
-position = Vector2(168, 40)
-rotation = 4.71238
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qnc8r"]
+size = Vector2(16, 16)
+
+[node name="Dispenser" type="Area2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_vhts7")
-bulletPackedScene = ExtResource("2_ngp0p")
+packedScene = ExtResource("2_guswp")
+sprite = NodePath("")
 
-[node name="Timer" type="Timer" parent="."]
-autostart = true
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 texture = ExtResource("3_i26qc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_4ydb0")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_yj18c")
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qnc8r")

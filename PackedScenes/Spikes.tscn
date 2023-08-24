@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dh8grwhvpdu88"]
+[gd_scene load_steps=7 format=3 uid="uid://cia4kkqvhhvqq"]
 
 [ext_resource type="Script" path="res://Scripts/Spikes.cs" id="1_elxoh"]
 [ext_resource type="Texture2D" uid="uid://cm5xq7nm0ath1" path="res://Textures/spikes.png" id="2_tifhb"]
@@ -43,11 +43,10 @@ _data = {
 "On": SubResource("Animation_dq3xm")
 }
 
-[node name="Spikes" type="Area2D" node_paths=PackedStringArray("sprite", "animationPlayer")]
-position = Vector2(40, 56)
+[node name="Spikes" type="Area2D" node_paths=PackedStringArray("animationPlayer", "sprite")]
 script = ExtResource("1_elxoh")
-sprite = NodePath("Sprite2D")
 animationPlayer = NodePath("Sprite2D/AnimationPlayer")
+sprite = NodePath("Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0.5)
@@ -56,6 +55,7 @@ shape = SubResource("RectangleShape2D_ly4yk")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_tifhb")
 hframes = 4
+frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
 libraries = {

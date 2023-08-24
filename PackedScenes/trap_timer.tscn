@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnsldubclky0e"]
+
+[ext_resource type="Script" path="res://Scripts/TrapTimer.cs" id="1_cvwc5"]
+[ext_resource type="Texture2D" uid="uid://cysgoyruxg3ug" path="res://Textures/trap_timer.png" id="2_x7xoy"]
+
+[node name="TrapTimer" type="Timer"]
+autostart = true
+script = ExtResource("1_cvwc5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_x7xoy")

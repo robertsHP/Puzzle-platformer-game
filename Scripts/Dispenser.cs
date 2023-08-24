@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 public partial class Dispenser : Trap {
-	[Export] public PackedScene bulletPackedScene;
+	[Export] public PackedScene packedScene;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
@@ -14,10 +14,7 @@ public partial class Dispenser : Trap {
 		
 	}
 	public override void Trigger () {
-		
-	}
-	public void _on_timer_timeout () {
 		if(GameScene.Instance.CurrentState == GameScene.State.DEFAULT)
-			Global.LoadPackedScene(this, bulletPackedScene);
+			Global.LoadPackedScene(this, packedScene);
 	}
 }
