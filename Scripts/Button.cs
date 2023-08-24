@@ -7,12 +7,14 @@ public partial class Button : TrapTrigger {
     private bool triggered;
 
 	public override void _Process(double delta) {
-		if(!triggered && nodeEntered != null) {
-			if (nodeEntered is Player) {
-				if (Input.IsActionPressed("player_interact")) {
-					sprite.Frame++;
-					TriggerTraps();
-                    triggered = true;
+		if(GameScene.Instance.CurrentState == GameScene.State.DEFAULT) {
+			if(!triggered && nodeEntered != null) {
+				if (nodeEntered is Player) {
+					if (Input.IsActionPressed("player_interact")) {
+						sprite.Frame++;
+						TriggerTraps();
+						triggered = true;
+					}
 				}
 			}
 		}

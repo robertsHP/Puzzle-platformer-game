@@ -20,8 +20,10 @@ public partial class Spikes : Trap
 
 	public override void _Ready () {
 		On = TurnedOnWhenGameLaunched;
+		triggerdelegate = Raise;
 	}
-	public override void Trigger () {
+
+	public void Raise () {
 		On = !On;
 		animationPlayer.Play(On ? "On" : "Off");
 	}

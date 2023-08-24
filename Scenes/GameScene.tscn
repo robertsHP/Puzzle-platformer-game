@@ -1,10 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://mwrpir3iq44x"]
+[gd_scene load_steps=13 format=3 uid="uid://mwrpir3iq44x"]
 
 [ext_resource type="Script" path="res://Scripts/GameScene.cs" id="1_pjalo"]
 [ext_resource type="Texture2D" uid="uid://d1eby0qe0i5gq" path="res://Textures/tiles.png" id="1_vnr6b"]
 [ext_resource type="Script" path="res://Scripts/MainCamera.cs" id="2_0knap"]
 [ext_resource type="PackedScene" uid="uid://bo3gvuw3bhwe" path="res://PackedScenes/button.tscn" id="4_vep0h"]
 [ext_resource type="PackedScene" uid="uid://g5rsj5pg8rnp" path="res://PackedScenes/player.tscn" id="5_oyhtc"]
+[ext_resource type="PackedScene" uid="uid://v531ldcpaj6q" path="res://PackedScenes/lava.tscn" id="6_fxc4w"]
+[ext_resource type="PackedScene" uid="uid://dp2yh0v73kix3" path="res://PackedScenes/green_monster.tscn" id="7_j33uu"]
+[ext_resource type="PackedScene" uid="uid://che60jtsgxnse" path="res://PackedScenes/door.tscn" id="8_p48w5"]
+[ext_resource type="PackedScene" uid="uid://bib2vir701pva" path="res://PackedScenes/dispenser.tscn" id="9_2knan"]
+[ext_resource type="PackedScene" uid="uid://5cdl1h6mhvql" path="res://PackedScenes/trap_timer.tscn" id="10_i7rp8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p3fgy"]
 texture = ExtResource("1_vnr6b")
@@ -70,9 +75,10 @@ physics_layer_1/collision_layer = 0
 physics_layer_1/collision_mask = 0
 sources/1 = SubResource("TileSetAtlasSource_p3fgy")
 
-[node name="GameScene" type="Node2D" node_paths=PackedStringArray("tileMap")]
+[node name="GameScene" type="Node2D" node_paths=PackedStringArray("tileMap", "player")]
 script = ExtResource("1_pjalo")
 tileMap = NodePath("TileMap")
+player = NodePath("Player")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_va231")
@@ -97,3 +103,18 @@ player = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("5_oyhtc")]
 position = Vector2(24, 24)
+
+[node name="Lava" parent="." instance=ExtResource("6_fxc4w")]
+position = Vector2(24, 72)
+
+[node name="GreenMonster" parent="." instance=ExtResource("7_j33uu")]
+position = Vector2(86, 29)
+
+[node name="Door" parent="." instance=ExtResource("8_p48w5")]
+position = Vector2(104, 40)
+
+[node name="Dispenser" parent="." instance=ExtResource("9_2knan")]
+position = Vector2(168, 56)
+
+[node name="TrapTimer" parent="Dispenser" node_paths=PackedStringArray("trap") instance=ExtResource("10_i7rp8")]
+trap = NodePath("..")

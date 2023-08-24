@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://che60jtsgxnse"]
+
+[ext_resource type="Texture2D" uid="uid://d3st7rdrj756b" path="res://Textures/door.png" id="1_d3bkw"]
+[ext_resource type="Script" path="res://Scripts/Door.cs" id="1_nxsrx"]
+
+[sub_resource type="Animation" id="Animation_xkt81"]
+resource_name = "open"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vs24o"]
+_data = {
+"open": SubResource("Animation_xkt81")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6tfr0"]
+size = Vector2(16, 16)
+
+[node name="Door" type="Area2D" node_paths=PackedStringArray("animationPlayer")]
+script = ExtResource("1_nxsrx")
+animationPlayer = NodePath("Sprite2D/AnimationPlayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_d3bkw")
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_vs24o")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6tfr0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -49,7 +49,7 @@ public partial class Player : Creature
 		MoveAndSlide();
 	}
 	public override void Kill () {
-		GameScene.Instance.CurrentState = GameScene.State.GAMEOVER;
+		GameScene.Instance.SetGameOverState();
 		alive = false;
 		animationPlayer.Play("death");
 	}

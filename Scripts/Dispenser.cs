@@ -4,16 +4,10 @@ using System;
 public partial class Dispenser : Trap {
 	[Export] public PackedScene packedScene;
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready() {
-		
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta) {
-		
-	}
-	public override void Trigger () {
+	public override void _Ready () {
+        triggerdelegate = Shoot;
+    }
+	public void Shoot () {
 		if(GameScene.Instance.CurrentState == GameScene.State.DEFAULT)
 			Global.LoadPackedScene(this, packedScene);
 	}

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bib2vir701pva"]
+[gd_scene load_steps=7 format=3 uid="uid://bib2vir701pva"]
 
 [ext_resource type="Script" path="res://Scripts/Dispenser.cs" id="1_vhts7"]
 [ext_resource type="PackedScene" path="res://PackedScenes/bullet.tscn" id="2_guswp"]
+[ext_resource type="Script" path="res://Scripts/DispenserBody.cs" id="3_efsnw"]
 [ext_resource type="Texture2D" uid="uid://dh38af0o0soky" path="res://Textures/dispenser.png" id="3_i26qc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yj18c"]
@@ -13,9 +14,10 @@ size = Vector2(16, 16)
 [node name="Dispenser" type="Area2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_vhts7")
 packedScene = ExtResource("2_guswp")
-sprite = NodePath("")
+sprite = NodePath("CharacterBody2D/Sprite2D")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("3_efsnw")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 texture = ExtResource("3_i26qc")

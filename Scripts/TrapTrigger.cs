@@ -9,7 +9,7 @@ public partial class TrapTrigger : Area2D {
 	public void TriggerTraps () {
 		if(traps.Count != 0) {
 			foreach (Trap trap in traps) {
-				trap.Trigger();
+				trap.triggerdelegate();
 			}
 		}
 	}

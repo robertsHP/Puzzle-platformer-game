@@ -11,7 +11,7 @@ public partial class Bullet : Area2D {
 		if (node is Player) {
 			Player player = (Player) node;
 			player.Kill();
-		} else {
+		} else if(!(node is DispenserBody)) {
 			QueueFree();
 		}
 	}
