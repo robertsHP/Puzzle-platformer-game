@@ -44,6 +44,8 @@ public partial class Player : Creature {
 			} else {
 				velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 			}
+		} else {
+			velocity.X = 0;
 		}
 		Velocity = velocity;
 		MoveAndSlide();

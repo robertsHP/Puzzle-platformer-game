@@ -1,15 +1,18 @@
-[gd_scene load_steps=13 format=3 uid="uid://mwrpir3iq44x"]
+[gd_scene load_steps=16 format=3 uid="uid://mwrpir3iq44x"]
 
 [ext_resource type="Script" path="res://Scripts/GameScene.cs" id="1_pjalo"]
 [ext_resource type="Texture2D" uid="uid://d1eby0qe0i5gq" path="res://Textures/tiles.png" id="1_vnr6b"]
 [ext_resource type="Script" path="res://Scripts/MainCamera.cs" id="2_0knap"]
+[ext_resource type="PackedScene" uid="uid://bib2vir701pva" path="res://PackedScenes/dispenser.tscn" id="3_u671w"]
 [ext_resource type="PackedScene" uid="uid://dmp6ty4ws2nf8" path="res://PackedScenes/ball.tscn" id="3_xngh1"]
-[ext_resource type="PackedScene" uid="uid://w1e3l8opx33o" path="res://PackedScenes/pressure_pad.tscn" id="4_26pgb"]
+[ext_resource type="PackedScene" uid="uid://5cdl1h6mhvql" path="res://PackedScenes/trap_timer.tscn" id="4_6au4o"]
 [ext_resource type="PackedScene" uid="uid://cia4kkqvhhvqq" path="res://PackedScenes/spikes.tscn" id="5_apnub"]
 [ext_resource type="PackedScene" uid="uid://g5rsj5pg8rnp" path="res://PackedScenes/player.tscn" id="5_oyhtc"]
 [ext_resource type="PackedScene" uid="uid://x5rirpbi7s7q" path="res://PackedScenes/trap_door.tscn" id="6_hbek1"]
 [ext_resource type="PackedScene" uid="uid://bo3gvuw3bhwe" path="res://PackedScenes/button.tscn" id="7_y1wre"]
+[ext_resource type="PackedScene" uid="uid://v531ldcpaj6q" path="res://PackedScenes/lava.tscn" id="8_7nw3m"]
 [ext_resource type="PackedScene" uid="uid://bf1mwsve6rmbw" path="res://PackedScenes/blue_monster.tscn" id="8_onw78"]
+[ext_resource type="PackedScene" uid="uid://dp2yh0v73kix3" path="res://PackedScenes/green_monster.tscn" id="14_f6ath"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p3fgy"]
 texture = ExtResource("1_vnr6b")
@@ -83,33 +86,134 @@ player = NodePath("Entities/Player")
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_va231")
 format = 2
-layer_0/tile_data = PackedInt32Array(0, 1, 0, 65536, 1, 0, 196608, 1, 0, 262144, 1, 0, 327680, 1, 0, 393216, 1, 0, 458752, 1, 0, 524288, 1, 0, 589824, 1, 0, 655360, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 1572888, 1, 0, 1572887, 1, 0, 1572886, 1, 0, 1572885, 1, 0, 1572884, 1, 0, 1572883, 1, 0, 1572882, 1, 0, 1572881, 1, 0, 1572880, 1, 0, 1572879, 1, 0, 1572878, 1, 0, 1572877, 1, 0, 1572876, 1, 0, 1572875, 1, 0, 1572874, 1, 0, 1572873, 1, 0, 1572872, 1, 0, 1572871, 1, 0, 1572870, 1, 0, 1572869, 1, 0, 1572868, 1, 0, 1572867, 1, 0, 1572866, 1, 0, 1572865, 1, 0, 1572864, 1, 0, 1507328, 1, 0, 1441792, 1, 0, 1376256, 1, 0, 1310720, 1, 0, 1245184, 1, 0, 1179648, 1, 0, 1114112, 1, 0, 1048576, 1, 0, 983040, 1, 0, 917504, 1, 0, 851968, 1, 0, 786432, 1, 0, 18, 1, 0, 19, 1, 0, 20, 1, 0, 21, 1, 0, 22, 1, 0, 23, 1, 0, 24, 1, 0, 65560, 1, 0, 131096, 1, 0, 196632, 1, 0, 262168, 1, 0, 327704, 1, 0, 393240, 1, 0, 458776, 1, 0, 524312, 1, 0, 589848, 1, 0, 655384, 1, 0, 720920, 1, 0, 786456, 1, 0, 851992, 1, 0, 917528, 1, 0, 983064, 1, 0, 1048600, 1, 0, 1114136, 1, 0, 1179672, 1, 0, 1245208, 1, 0, 1310744, 1, 0, 1376280, 1, 0, 1441816, 1, 0, 1507352, 1, 0, 720896, 1, 0, 131072, 1, 0, 131073, 65537, 0, 131075, 65537, 0, 131077, 65537, 0, 196613, 65537, 0, 262149, 65537, 0, 393217, 65537, 0, 393219, 65537, 0, 393221, 65537, 0, 655361, 65537, 0, 655362, 65537, 0, 655363, 65537, 0, 655364, 65537, 0, 655365, 65537, 0, 655366, 65537, 0, 655367, 65537, 0, 655368, 65537, 0, 655369, 65537, 0, 655370, 65537, 0, 524291, 65537, 0, 524290, 65537, 0, 196611, 65537, 0, 262147, 65537, 0, 327683, 65537, 0, 327685, 65537, 0, 458757, 65537, 0, 524293, 65537, 0, 524296, 65537, 0, 524297, 65537, 0, 524298, 65537, 0, 65539, 65537, 0, 65540, 65537, 0, 65541, 65537, 0, 589834, 65537, 0)
+layer_0/tile_data = PackedInt32Array(0, 1, 0, 65536, 1, 0, 196608, 1, 0, 262144, 1, 0, 327680, 1, 0, 393216, 1, 0, 458752, 1, 0, 524288, 1, 0, 589824, 1, 0, 655360, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 1572888, 1, 0, 1572887, 1, 0, 1572886, 1, 0, 1572885, 1, 0, 1572884, 1, 0, 1572883, 1, 0, 1572882, 1, 0, 1572881, 1, 0, 1572880, 1, 0, 1572879, 1, 0, 1572878, 1, 0, 1572877, 1, 0, 1572876, 1, 0, 1572875, 1, 0, 1572874, 1, 0, 1572873, 1, 0, 1572872, 1, 0, 1572871, 1, 0, 1572870, 1, 0, 1572869, 1, 0, 1572868, 1, 0, 1572867, 1, 0, 1572866, 1, 0, 1572865, 1, 0, 1572864, 1, 0, 1507328, 1, 0, 1441792, 1, 0, 1376256, 1, 0, 1310720, 1, 0, 1245184, 1, 0, 1179648, 1, 0, 1114112, 1, 0, 1048576, 1, 0, 983040, 1, 0, 917504, 1, 0, 851968, 1, 0, 786432, 1, 0, 18, 1, 0, 19, 1, 0, 20, 1, 0, 21, 1, 0, 22, 1, 0, 23, 1, 0, 24, 1, 0, 65560, 1, 0, 131096, 1, 0, 196632, 1, 0, 262168, 1, 0, 327704, 1, 0, 393240, 1, 0, 458776, 1, 0, 524312, 1, 0, 589848, 1, 0, 655384, 1, 0, 720920, 1, 0, 786456, 1, 0, 851992, 1, 0, 917528, 1, 0, 983064, 1, 0, 1048600, 1, 0, 1114136, 1, 0, 1179672, 1, 0, 1245208, 1, 0, 1310744, 1, 0, 1376280, 1, 0, 1441816, 1, 0, 1507352, 1, 0, 720896, 1, 0, 131072, 1, 0, 851979, 65537, 0, 786443, 65537, 0, 786442, 65537, 0, 851977, 262145, 0, 786441, 65537, 0, 655371, 65537, 0, 655370, 65537, 0, 655369, 65537, 0, 655373, 65537, 0, 786445, 65537, 0, 720907, 196609, 1, 720905, 196609, 1, 524300, 65537, 0, 524299, 65537, 0, 524301, 65537, 0, 524297, 65537, 0, 589833, 65537, 0, 589834, 131073, 1, 589835, 131073, 1, 589837, 65537, 0, 655367, 196609, 1, 524295, 196609, 1, 458761, 196609, 0, 393225, 196609, 0, 327689, 196609, 0, 262151, 196609, 1, 327687, 196609, 1, 393223, 196609, 1, 458759, 196609, 1, 262153, 196609, 0, 196615, 131073, 0, 196617, 131073, 0, 720903, 196609, 1, 327686, 65537, 0, 262150, 65537, 0, 196614, 65537, 0, 196616, 131073, 0, 196618, 131073, 0, 786434, 65537, 0, 196619, 65537, 0, 262155, 65537, 0, 262156, 65537, 0, 327692, 65537, 0, 327693, 65537, 0, 393229, 65537, 0, 393230, 65537, 0, 524302, 65537, 0, 327684, 65537, 0, 327683, 65537, 0, 327682, 65537, 0, 327681, 65537, 0, 262149, 65537, 0, 327685, 65537, 0, 196613, 65537, 0, 851981, 65537, 0, 917518, 65537, 0, 917517, 65537, 0, 917516, 65537, 0, 917515, 65537, 0, 786436, 65537, 0, 983046, 262145, 0, 983045, 262145, 0, 983044, 262145, 0, 983043, 262145, 0, 983042, 262145, 0, 983041, 262145, 0, 917513, 262145, 0, 983049, 262145, 0, 983048, 262145, 0, 983047, 262145, 0, 786438, 65537, 0, 786440, 65537, 0, 786439, 196609, 1, 851975, 196609, 1, 917511, 196609, 1, 720897, 65537, 0, 589827, 65537, 0, 655361, 65537, 0, 983054, 65537, 0, 983055, 65537, 0, 983056, 65537, 0, 983057, 65537, 0, 983058, 65537, 0, 983059, 65537, 0, 983060, 65537, 0, 983061, 65537, 0, 786454, 65537, 0, 786455, 65537, 0, 917519, 65537, 0, 917520, 65537, 0, 917521, 65537, 0, 917522, 65537, 0, 917523, 65537, 0, 917524, 65537, 0, 720918, 65537, 0, 720919, 65537, 0, 655383, 65537, 0, 655382, 65537, 0, 917525, 65537, 0, 196631, 65537, 0, 196630, 65537, 0, 262164, 65537, 0, 262163, 65537, 0, 327697, 65537, 0, 327696, 65537, 0, 524303, 131073, 0, 589839, 196609, 1, 655375, 196609, 1, 720911, 196609, 1, 786447, 196609, 1, 851983, 196609, 1, 524304, 131073, 0, 524307, 131073, 0, 524305, 131073, 1, 524306, 131073, 1, 589843, 196609, 1, 655379, 196609, 1, 720915, 196609, 1, 786451, 196609, 1, 851987, 196609, 1, 262165, 65537, 0, 458773, 65537, 0, 458774, 65537, 0, 458775, 65537, 0, 917526, 65537, 0, 589847, 65537, 0, 589846, 65537, 0, 524310, 65537, 0, 524311, 65537, 0, 65557, 65537, 0, 65556, 65537, 0, 65555, 65537, 0, 65554, 65537, 0, 131089, 65537, 0, 65553, 65537, 0, 65552, 65537, 0, 131088, 65537, 0, 131087, 65537, 0, 131086, 65537, 0, 65550, 65537, 0, 65551, 65537, 0, 65549, 65537, 0, 65548, 65537, 0, 327698, 65537, 0, 196612, 65537, 0, 262148, 65537, 0, 196609, 65537, 0, 589831, 196609, 1)
+
+[node name="Lava" type="Node2D" parent="."]
+
+[node name="Lava2" parent="Lava" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("8_7nw3m")]
+position = Vector2(72, 232)
+animationPlayer = NodePath("../Lava/Sprite2D/AnimationPlayer")
+
+[node name="Lava" parent="Lava" instance=ExtResource("8_7nw3m")]
+position = Vector2(88, 232)
+
+[node name="Lava3" parent="Lava" instance=ExtResource("8_7nw3m")]
+position = Vector2(56, 232)
+
+[node name="Lava4" parent="Lava" instance=ExtResource("8_7nw3m")]
+position = Vector2(40, 232)
+
+[node name="Lava5" parent="Lava" instance=ExtResource("8_7nw3m")]
+position = Vector2(24, 232)
+
+[node name="Lava6" parent="Lava" instance=ExtResource("8_7nw3m")]
+position = Vector2(104, 232)
+
+[node name="Lava7" parent="Lava" instance=ExtResource("8_7nw3m")]
+position = Vector2(120, 232)
+
+[node name="Lava8" parent="Lava" instance=ExtResource("8_7nw3m")]
+position = Vector2(136, 232)
 
 [node name="Traps" type="Node2D" parent="."]
 
-[node name="Ball" parent="Traps" instance=ExtResource("3_xngh1")]
-position = Vector2(72, 40)
+[node name="Dispenser" parent="Traps" instance=ExtResource("3_u671w")]
+position = Vector2(104, 24)
+rotation = -3.14159
 
-[node name="PressurePad" parent="Traps" instance=ExtResource("4_26pgb")]
-position = Vector2(56, 120)
+[node name="TrapTimer" parent="Traps/Dispenser" node_paths=PackedStringArray("trap") instance=ExtResource("4_6au4o")]
+wait_time = 1.5
+trap = NodePath("..")
+
+[node name="Dispenser2" parent="Traps" node_paths=PackedStringArray("sprite") instance=ExtResource("3_u671w")]
+position = Vector2(120, 24)
+rotation = -3.14159
+sprite = NodePath("../Dispenser/CharacterBody2D/Sprite2D")
+
+[node name="TrapTimer" parent="Traps/Dispenser2" node_paths=PackedStringArray("trap") instance=ExtResource("4_6au4o")]
+wait_time = 2.0
+trap = NodePath("..")
+
+[node name="Dispenser3" parent="Traps" node_paths=PackedStringArray("sprite") instance=ExtResource("3_u671w")]
+position = Vector2(136, 24)
+rotation = -3.14159
+sprite = NodePath("../Dispenser/CharacterBody2D/Sprite2D")
+
+[node name="TrapTimer" parent="Traps/Dispenser3" node_paths=PackedStringArray("trap") instance=ExtResource("4_6au4o")]
+wait_time = 3.0
+trap = NodePath("..")
+
+[node name="Dispenser4" parent="Traps" node_paths=PackedStringArray("sprite") instance=ExtResource("3_u671w")]
+position = Vector2(152, 24)
+rotation = -3.14159
+sprite = NodePath("../Dispenser/CharacterBody2D/Sprite2D")
+
+[node name="TrapTimer" parent="Traps/Dispenser4" node_paths=PackedStringArray("trap") instance=ExtResource("4_6au4o")]
+wait_time = 2.7
+trap = NodePath("..")
+
+[node name="Dispenser5" parent="Traps" node_paths=PackedStringArray("sprite") instance=ExtResource("3_u671w")]
+position = Vector2(168, 24)
+rotation = -3.14159
+sprite = NodePath("../Dispenser/CharacterBody2D/Sprite2D")
+
+[node name="TrapTimer" parent="Traps/Dispenser5" node_paths=PackedStringArray("trap") instance=ExtResource("4_6au4o")]
+wait_time = 3.4
+trap = NodePath("..")
+
+[node name="Ball2" parent="Traps" instance=ExtResource("3_xngh1")]
+position = Vector2(40, 152)
+
+[node name="Ball" parent="Traps" instance=ExtResource("3_xngh1")]
+position = Vector2(200, 152)
+
+[node name="Spikes3" parent="Traps" instance=ExtResource("5_apnub")]
+position = Vector2(312, 40)
+rotation = 3.14159
+
+[node name="TrapTimer" parent="Traps/Spikes3" node_paths=PackedStringArray("trap") instance=ExtResource("4_6au4o")]
+wait_time = 2.5
+trap = NodePath("..")
 
 [node name="Spikes" parent="Traps" instance=ExtResource("5_apnub")]
-position = Vector2(206, 124)
+position = Vector2(264, 72)
+
+[node name="TrapTimer" parent="Traps/Spikes" node_paths=PackedStringArray("trap") instance=ExtResource("4_6au4o")]
+wait_time = 0.5
+trap = NodePath("..")
+
+[node name="Spikes2" parent="Traps" instance=ExtResource("5_apnub")]
+position = Vector2(327, 56)
+
+[node name="TrapTimer" parent="Traps/Spikes2" node_paths=PackedStringArray("trap") instance=ExtResource("4_6au4o")]
+trap = NodePath("..")
 
 [node name="TrapDoor" parent="Traps" instance=ExtResource("6_hbek1")]
-position = Vector2(72, 56)
+position = Vector2(200, 168)
 
-[node name="Button" parent="Traps" node_paths=PackedStringArray("traps") instance=ExtResource("7_y1wre")]
-position = Vector2(40, 120)
-traps = [NodePath("../TrapDoor")]
+[node name="Ball3" parent="Traps" instance=ExtResource("3_xngh1")]
+position = Vector2(88, 40)
+
+[node name="TrapDoor3" parent="Traps" instance=ExtResource("6_hbek1")]
+position = Vector2(40, 168)
+
+[node name="Button2" parent="Traps" instance=ExtResource("7_y1wre")]
+position = Vector2(24, 40)
+
+[node name="TrapDoor2" parent="Traps" instance=ExtResource("6_hbek1")]
+position = Vector2(216, 120)
 
 [node name="Entities" type="Node2D" parent="."]
 
 [node name="Player" parent="Entities" instance=ExtResource("5_oyhtc")]
-position = Vector2(25, 24)
+position = Vector2(375, 40)
+
+[node name="GreenMonster" parent="Entities" instance=ExtResource("14_f6ath")]
+position = Vector2(251, 120)
+JumpVelocity = -20.0
 
 [node name="BlueMonster" parent="Entities" instance=ExtResource("8_onw78")]
-position = Vector2(23, 152)
+position = Vector2(33, 72)
 
 [node name="MainCamera" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 texture_filter = 1
