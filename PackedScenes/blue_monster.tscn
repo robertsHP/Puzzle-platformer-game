@@ -55,6 +55,7 @@ size = Vector2(7, 2)
 script = ExtResource("1_0rhq1")
 sprite = NodePath("Sprite2D")
 animationPlayer = NodePath("Sprite2D/AnimationPlayer")
+moveDirection = 1
 collisionShape2D = NodePath("CollisionShape2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

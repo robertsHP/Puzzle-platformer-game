@@ -5,7 +5,7 @@ public partial class Player : Creature {
 	[Export] public float JumpVelocity = -30.0f;
 
 	public override void _Ready () {
-		animationPlayer.Play("idle");
+		sprite.Frame = 0;
 	}
 	public override void _PhysicsProcess(double delta)
 	{
@@ -18,6 +18,8 @@ public partial class Player : Creature {
 
 		if(alive && GameScene.Instance.CurrentState == GameScene.State.DEFAULT) {
 			if (IsOnFloor()) {
+				if(!animationPlayer.IsPlaying())
+					sprite.Frame = 0;
 				// Handle Jump.
 				if (Input.IsActionJustPressed("player_jump")) {
 					animationPlayer.Play("jump");
@@ -36,7 +38,7 @@ public partial class Player : Creature {
 				direction.X += (float) moveDirection;
 			}
 			if (direction != Vector2.Zero) {
-				if (animationPlayer.CurrentAnimation != "jump")
+				if (IsOnFloor())
 					animationPlayer.Play("walk");
 				velocity.X = direction.X * Speed;
 			} else {
@@ -49,6 +51,7 @@ public partial class Player : Creature {
 	public override void Kill () {
 		GameScene.Instance.SetGameOverState();
 		alive = false;
+		moveDirection = MoveDirection.NONE;
 		animationPlayer.Play("death");
 	}
 }

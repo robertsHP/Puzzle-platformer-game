@@ -9,19 +9,20 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ygrrq"]
 size = Vector2(16, 16)
 
-[node name="TrapDoor" type="Area2D" node_paths=PackedStringArray("collisionShape", "sprite")]
+[node name="TrapDoor" type="Area2D" node_paths=PackedStringArray("staticBody", "sprite")]
 script = ExtResource("1_48yb0")
-collisionShape = NodePath("CharacterBody2D/CBCollisionShape2D")
-sprite = NodePath("CharacterBody2D/Sprite2D")
+staticBody = NodePath("StaticBody2D")
+sprite = NodePath("Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xc2mf")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-
-[node name="CBCollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("RectangleShape2D_ygrrq")
-
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_dfrlh")
 hframes = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CBCollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_ygrrq")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)

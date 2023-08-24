@@ -1,16 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmp6ty4ws2nf8"]
+[gd_scene load_steps=7 format=3 uid="uid://dmp6ty4ws2nf8"]
 
 [ext_resource type="Script" path="res://Scripts/Ball.cs" id="1_le8y0"]
 [ext_resource type="Texture2D" uid="uid://qy0y5og0yij6" path="res://Textures/ball.png" id="2_ji500"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_x0h3k"]
-radius = 7.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_urahl"]
+size = Vector2(14, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vu4ej"]
 size = Vector2(8, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5wmyw"]
 size = Vector2(8, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qp87n"]
+size = Vector2(14, 7)
 
 [node name="Ball" type="CharacterBody2D"]
 script = ExtResource("1_le8y0")
@@ -22,7 +25,7 @@ texture = ExtResource("2_ji500")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
-shape = SubResource("CircleShape2D_x0h3k")
+shape = SubResource("RectangleShape2D_urahl")
 
 [node name="RightArea2D" type="Area2D" parent="."]
 
@@ -36,7 +39,14 @@ shape = SubResource("RectangleShape2D_vu4ej")
 position = Vector2(-4, 1)
 shape = SubResource("RectangleShape2D_5wmyw")
 
+[node name="BottomArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomArea2D"]
+position = Vector2(0, 7.5)
+shape = SubResource("RectangleShape2D_qp87n")
+
 [connection signal="body_entered" from="RightArea2D" to="." method="_on_right_area_2d_body_entered"]
 [connection signal="body_exited" from="RightArea2D" to="." method="_on_right_area_2d_body_exited"]
 [connection signal="body_entered" from="LeftArea2D" to="." method="_on_left_area_2d_body_entered"]
 [connection signal="body_exited" from="LeftArea2D" to="." method="_on_left_area_2d_body_exited"]
+[connection signal="body_entered" from="BottomArea2D" to="." method="_on_bottom_area_2d_body_entered"]

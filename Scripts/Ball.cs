@@ -37,13 +37,21 @@ public partial class Ball : CharacterBody2D {
 		}
 	}
 	public void _on_left_area_2d_body_entered (Node2D node) {
-		if (node is Creature) {
+		if (node is Player) {
 			creaturePushingRight = (Creature) node;
 		}
 	}
 	public void _on_right_area_2d_body_entered (Node2D node) {
-		if (node is Creature) {
+		if (node is Player) {
 			creaturePushingLeft = (Creature) node;
+		}
+	}
+	public void _on_bottom_area_2d_body_entered (Node2D node) {
+		if(!IsOnFloor()) {
+			if (node is Creature) {
+				Creature creature = (Creature) node;
+				creature.Kill();
+			}
 		}
 	}
 	public void _on_left_area_2d_body_exited (Node2D node) {

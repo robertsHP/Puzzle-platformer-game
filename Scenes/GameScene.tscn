@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://mwrpir3iq44x"]
+[gd_scene load_steps=13 format=3 uid="uid://mwrpir3iq44x"]
 
 [ext_resource type="Script" path="res://Scripts/GameScene.cs" id="1_pjalo"]
 [ext_resource type="Texture2D" uid="uid://d1eby0qe0i5gq" path="res://Textures/tiles.png" id="1_vnr6b"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://w1e3l8opx33o" path="res://PackedScenes/pressure_pad.tscn" id="4_26pgb"]
 [ext_resource type="PackedScene" uid="uid://cia4kkqvhhvqq" path="res://PackedScenes/spikes.tscn" id="5_apnub"]
 [ext_resource type="PackedScene" uid="uid://g5rsj5pg8rnp" path="res://PackedScenes/player.tscn" id="5_oyhtc"]
+[ext_resource type="PackedScene" uid="uid://x5rirpbi7s7q" path="res://PackedScenes/trap_door.tscn" id="6_hbek1"]
+[ext_resource type="PackedScene" uid="uid://bo3gvuw3bhwe" path="res://PackedScenes/button.tscn" id="7_y1wre"]
+[ext_resource type="PackedScene" uid="uid://bf1mwsve6rmbw" path="res://PackedScenes/blue_monster.tscn" id="8_onw78"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p3fgy"]
 texture = ExtResource("1_vnr6b")
@@ -75,24 +78,38 @@ sources/1 = SubResource("TileSetAtlasSource_p3fgy")
 [node name="GameScene" type="Node2D" node_paths=PackedStringArray("tileMap", "player")]
 script = ExtResource("1_pjalo")
 tileMap = NodePath("TileMap")
-player = NodePath("Player")
+player = NodePath("Entities/Player")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_va231")
 format = 2
-layer_0/tile_data = PackedInt32Array(0, 1, 0, 65536, 1, 0, 196608, 1, 0, 262144, 1, 0, 327680, 1, 0, 393216, 1, 0, 458752, 1, 0, 524288, 1, 0, 589824, 1, 0, 655360, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 1572888, 1, 0, 1572887, 1, 0, 1572886, 1, 0, 1572885, 1, 0, 1572884, 1, 0, 1572883, 1, 0, 1572882, 1, 0, 1572881, 1, 0, 1572880, 1, 0, 1572879, 1, 0, 1572878, 1, 0, 1572877, 1, 0, 1572876, 1, 0, 1572875, 1, 0, 1572874, 1, 0, 1572873, 1, 0, 1572872, 1, 0, 1572871, 1, 0, 1572870, 1, 0, 1572869, 1, 0, 1572868, 1, 0, 1572867, 1, 0, 1572866, 1, 0, 1572865, 1, 0, 1572864, 1, 0, 1507328, 1, 0, 1441792, 1, 0, 1376256, 1, 0, 1310720, 1, 0, 1245184, 1, 0, 1179648, 1, 0, 1114112, 1, 0, 1048576, 1, 0, 983040, 1, 0, 917504, 1, 0, 851968, 1, 0, 786432, 1, 0, 18, 1, 0, 19, 1, 0, 20, 1, 0, 21, 1, 0, 22, 1, 0, 23, 1, 0, 24, 1, 0, 65560, 1, 0, 131096, 1, 0, 196632, 1, 0, 262168, 1, 0, 327704, 1, 0, 393240, 1, 0, 458776, 1, 0, 524312, 1, 0, 589848, 1, 0, 655384, 1, 0, 720920, 1, 0, 786456, 1, 0, 851992, 1, 0, 917528, 1, 0, 983064, 1, 0, 1048600, 1, 0, 1114136, 1, 0, 1179672, 1, 0, 1245208, 1, 0, 1310744, 1, 0, 1376280, 1, 0, 1441816, 1, 0, 1507352, 1, 0, 720896, 1, 0, 131072, 1, 0, 131073, 262145, 0, 131074, 262145, 0, 131075, 262145, 0, 65540, 65537, 1, 131076, 65537, 1, 196612, 65537, 1, 262148, 65537, 1, 327684, 65537, 0, 327685, 262145, 0, 327686, 262145, 0, 327687, 262145, 0, 196616, 65537, 0, 262152, 65537, 0, 327688, 65537, 0, 196617, 65537, 0, 262153, 65537, 0, 327689, 65537, 0, 327690, 65537, 0, 262154, 65537, 0, 196618, 65537, 0, 327683, 65537, 0, 327682, 65537, 0)
+layer_0/tile_data = PackedInt32Array(0, 1, 0, 65536, 1, 0, 196608, 1, 0, 262144, 1, 0, 327680, 1, 0, 393216, 1, 0, 458752, 1, 0, 524288, 1, 0, 589824, 1, 0, 655360, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 1572888, 1, 0, 1572887, 1, 0, 1572886, 1, 0, 1572885, 1, 0, 1572884, 1, 0, 1572883, 1, 0, 1572882, 1, 0, 1572881, 1, 0, 1572880, 1, 0, 1572879, 1, 0, 1572878, 1, 0, 1572877, 1, 0, 1572876, 1, 0, 1572875, 1, 0, 1572874, 1, 0, 1572873, 1, 0, 1572872, 1, 0, 1572871, 1, 0, 1572870, 1, 0, 1572869, 1, 0, 1572868, 1, 0, 1572867, 1, 0, 1572866, 1, 0, 1572865, 1, 0, 1572864, 1, 0, 1507328, 1, 0, 1441792, 1, 0, 1376256, 1, 0, 1310720, 1, 0, 1245184, 1, 0, 1179648, 1, 0, 1114112, 1, 0, 1048576, 1, 0, 983040, 1, 0, 917504, 1, 0, 851968, 1, 0, 786432, 1, 0, 18, 1, 0, 19, 1, 0, 20, 1, 0, 21, 1, 0, 22, 1, 0, 23, 1, 0, 24, 1, 0, 65560, 1, 0, 131096, 1, 0, 196632, 1, 0, 262168, 1, 0, 327704, 1, 0, 393240, 1, 0, 458776, 1, 0, 524312, 1, 0, 589848, 1, 0, 655384, 1, 0, 720920, 1, 0, 786456, 1, 0, 851992, 1, 0, 917528, 1, 0, 983064, 1, 0, 1048600, 1, 0, 1114136, 1, 0, 1179672, 1, 0, 1245208, 1, 0, 1310744, 1, 0, 1376280, 1, 0, 1441816, 1, 0, 1507352, 1, 0, 720896, 1, 0, 131072, 1, 0, 131073, 65537, 0, 131075, 65537, 0, 131077, 65537, 0, 196613, 65537, 0, 262149, 65537, 0, 393217, 65537, 0, 393219, 65537, 0, 393221, 65537, 0, 655361, 65537, 0, 655362, 65537, 0, 655363, 65537, 0, 655364, 65537, 0, 655365, 65537, 0, 655366, 65537, 0, 655367, 65537, 0, 655368, 65537, 0, 655369, 65537, 0, 655370, 65537, 0, 524291, 65537, 0, 524290, 65537, 0, 196611, 65537, 0, 262147, 65537, 0, 327683, 65537, 0, 327685, 65537, 0, 458757, 65537, 0, 524293, 65537, 0, 524296, 65537, 0, 524297, 65537, 0, 524298, 65537, 0, 65539, 65537, 0, 65540, 65537, 0, 65541, 65537, 0, 589834, 65537, 0)
 
-[node name="Objects" type="Node2D" parent="."]
+[node name="Traps" type="Node2D" parent="."]
 
-[node name="Ball" parent="Objects" instance=ExtResource("3_xngh1")]
-position = Vector2(89, 72)
+[node name="Ball" parent="Traps" instance=ExtResource("3_xngh1")]
+position = Vector2(72, 40)
 
-[node name="PressurePad" parent="Objects" node_paths=PackedStringArray("traps") instance=ExtResource("4_26pgb")]
-position = Vector2(119, 72)
-traps = [NodePath("../Spikes")]
+[node name="PressurePad" parent="Traps" instance=ExtResource("4_26pgb")]
+position = Vector2(56, 120)
 
-[node name="Spikes" parent="Objects" instance=ExtResource("5_apnub")]
-position = Vector2(135, 40)
+[node name="Spikes" parent="Traps" instance=ExtResource("5_apnub")]
+position = Vector2(206, 124)
+
+[node name="TrapDoor" parent="Traps" instance=ExtResource("6_hbek1")]
+position = Vector2(72, 56)
+
+[node name="Button" parent="Traps" node_paths=PackedStringArray("traps") instance=ExtResource("7_y1wre")]
+position = Vector2(40, 120)
+traps = [NodePath("../TrapDoor")]
+
+[node name="Entities" type="Node2D" parent="."]
+
+[node name="Player" parent="Entities" instance=ExtResource("5_oyhtc")]
+position = Vector2(25, 24)
+
+[node name="BlueMonster" parent="Entities" instance=ExtResource("8_onw78")]
+position = Vector2(23, 152)
 
 [node name="MainCamera" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 texture_filter = 1
@@ -104,7 +121,4 @@ limit_top = 0
 limit_right = 400
 limit_bottom = 400
 script = ExtResource("2_0knap")
-player = NodePath("../Player")
-
-[node name="Player" parent="." instance=ExtResource("5_oyhtc")]
-position = Vector2(24, 24)
+player = NodePath("../Entities/Player")

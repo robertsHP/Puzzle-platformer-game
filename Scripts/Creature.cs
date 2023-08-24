@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 public partial class Creature : CharacterBody2D {
-	public enum MoveDirection : int {LEFT = -1, RIGHT = 1}
+	public enum MoveDirection : int {LEFT = -1, NONE = 0, RIGHT = 1}
 
 	[Export] public Sprite2D sprite;
 	[Export] public AnimationPlayer animationPlayer;

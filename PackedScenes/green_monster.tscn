@@ -53,7 +53,6 @@ size = Vector2(7, 2)
 
 [node name="GreenMonster" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "animationPlayer", "collisionShape2D")]
 script = ExtResource("1_xnn8w")
-JumpVelocity = -500.0
 sprite = NodePath("Sprite2D")
 animationPlayer = NodePath("Sprite2D/AnimationPlayer")
 moveDirection = 1

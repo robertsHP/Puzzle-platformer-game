@@ -4,16 +4,16 @@ using System;
 
 public partial class Button : TrapTrigger {
 	private Node2D nodeEntered;
-    private bool triggered;
+    private bool triggered = false;
 
 	public override void _Process(double delta) {
 		if(GameScene.Instance.CurrentState == GameScene.State.DEFAULT) {
-			if(!triggered && nodeEntered != null) {
+			if(nodeEntered != null) {
 				if (nodeEntered is Player) {
-					if (Input.IsActionPressed("player_interact")) {
-						sprite.Frame++;
+					if (Input.IsActionJustPressed("player_interact")) {
+						triggered = !triggered;
+						sprite.Frame += (triggered) ? 1 : -1;
 						TriggerTraps();
-						triggered = true;
 					}
 				}
 			}

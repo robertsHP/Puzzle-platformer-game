@@ -35,7 +35,7 @@ public partial class GreenMonster : Creature {
 		}
 	}
 	public void _on_turn_area_2d_body_entered (Node2D node) {
-		if (node is TileMap) {
+		if (node is TileMap || node is Ball) {
 			SetDirection((MoveDirection)(-(int)moveDirection));
 		}
 	}
