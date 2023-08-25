@@ -9,7 +9,10 @@ public partial class BlueMonster : Creature {
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if(alive && GameScene.Instance.CurrentState == GameScene.State.DEFAULT) {
+		bool monsterAlive = CurrentState != State.DEAD;
+		bool gameStateDefault = GameScene.Instance.CurrentState == GameScene.State.DEFAULT;
+
+		if(monsterAlive && gameStateDefault) {
 			Vector2 velocity = Velocity;
 
 			// Add the gravity.
@@ -24,13 +27,15 @@ public partial class BlueMonster : Creature {
 		}
 	}
 	public void _on_body_area_2d_body_entered (Node2D node) {
-		if (alive && node is Player) {
+		bool monsterAlive = CurrentState != State.DEAD;
+
+		if (monsterAlive && node is Player) {
 			Player player = (Player) node;
 			player.Kill();
 		}
 	}
 	public void _on_turn_area_2d_body_entered (Node2D node) {
-		if (node is TileMap || node is Ball) {
+		if (TurnArea2DCollisionValidation(node)) {
 			SetDirection((MoveDirection)(-(int)moveDirection));
 		}
 	}

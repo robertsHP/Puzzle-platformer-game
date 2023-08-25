@@ -4,6 +4,12 @@ using System;
 public partial class Creature : CharacterBody2D {
 	public enum MoveDirection : int {LEFT = -1, NONE = 0, RIGHT = 1}
 
+	public enum State : int {
+		DEFAULT,
+		DEAD,
+		CLIMBING
+	}
+
 	[Export] public Sprite2D sprite;
 	[Export] public AnimationPlayer animationPlayer;
 	[Export] public MoveDirection moveDirection;
@@ -12,11 +18,10 @@ public partial class Creature : CharacterBody2D {
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	protected float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-
-	protected bool alive = true;
+	public State CurrentState {get; set;} = State.DEFAULT;
 
 	public virtual void Kill () {
-		alive = false;
+		CurrentState = State.DEAD;
 		collisionShape2D.Shape = null;
 		animationPlayer.Play("death");
 	}
@@ -26,5 +31,13 @@ public partial class Creature : CharacterBody2D {
 			Scale.Y * (int) moveDirection,
 			Scale.Y
 		);
+	}
+	protected bool TurnArea2DCollisionValidation (Node2D node) {
+		bool isTileMap = node is TileMap;
+		bool isBall = node is Ball;
+		bool isPlaceHolderBody = node is PlaceHolderStaticBody;
+		bool isMonster = node is BlueMonster || node is GreenMonster;
+
+		return isTileMap || isBall || isPlaceHolderBody || isMonster;
 	}
 }
