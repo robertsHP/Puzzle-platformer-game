@@ -9,31 +9,55 @@ public partial class Player : Creature {
 	}
 	public override void _PhysicsProcess(double delta)
 	{
+		bool gameStateDefault = GameScene.Instance.CurrentState == GameScene.State.DEFAULT;
 		Vector2 velocity = Velocity;
 
-		// Add the gravity.
-		if (!IsOnFloor()) {
-			velocity.Y += gravity * (float)delta;
-		}
+		velocity = HandleGravity(delta, velocity);
 
-		bool playerAlive = CurrentState != State.DEAD;
-		bool gameStateDefault = GameScene.Instance.CurrentState == GameScene.State.DEFAULT;
-
-		if(playerAlive || gameStateDefault) {
+		if(gameStateDefault) {
 			switch (CurrentState) {
-				case State.CLIMBING :
-					velocity = HandleClimbing(velocity); break;
-				default :
-					velocity = HandleMovement(velocity); break;
+				case State.CLIMBING : velocity = HandleClimbing(velocity); break;
+				case State.DEAD : 	  velocity = HandleDeath(velocity); break;
+				default : 			  velocity = HandleMovement(velocity); break;
 			}
-		} else {
-			velocity.X = 0;
 		}
 		Velocity = velocity;
 		MoveAndSlide();
 	}
+	private Vector2 HandleGravity (double delta, Vector2 velocity) {
+		if(CurrentState != State.CLIMBING) {
+			// Add the gravity.
+			if (!IsOnFloor()) {
+				velocity.Y += gravity * (float) delta;
+			}
+		}
+		return velocity;
+	}
 	private Vector2 HandleClimbing (Vector2 velocity) {
-		
+		if (!StartedClimbing && IsOnFloor()) {
+			CurrentState = State.DEFAULT;
+		} else {
+			Vector2 direction = Vector2.Zero;
+
+			if (Input.IsActionPressed("player_move_left")) {
+				direction.X--;
+			} else if (Input.IsActionPressed("player_move_right")) {
+				direction.X++;
+			} else if (Input.IsActionPressed("player_move_up")) {
+				direction.Y--;
+			} else if (Input.IsActionPressed("player_move_down")) {
+				direction.Y++;
+			}
+			if (direction != Vector2.Zero) {
+				StartedClimbing = false;
+				velocity.X = direction.X * Speed;
+				velocity.Y = direction.Y * Speed;
+			} else {
+				velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+				velocity.Y = Mathf.MoveToward(Velocity.Y, 0, Speed);
+			}
+		}
+
 		return velocity;
 	}
 	private Vector2 HandleMovement (Vector2 velocity) {
@@ -64,6 +88,10 @@ public partial class Player : Creature {
 		} else {
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 		}
+		return velocity;
+	}
+	private Vector2 HandleDeath (Vector2 velocity) {
+		velocity.X = 0;
 		return velocity;
 	}
 	public override void Kill () {

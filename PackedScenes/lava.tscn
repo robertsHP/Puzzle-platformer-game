@@ -26,7 +26,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2o1to"]
-size = Vector2(16, 16)
+size = Vector2(16, 15)
 
 [node name="Lava" type="Area2D" node_paths=PackedStringArray("animationPlayer")]
 script = ExtResource("1_y3hcs")
@@ -42,6 +42,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_2o1to")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

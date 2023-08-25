@@ -1,6 +1,8 @@
 using Godot;
 using System;
 using System.Collections;
+using System.Collections.Generic;
+
 
 public partial class Spikes : Trap
 {
@@ -17,10 +19,22 @@ public partial class Spikes : Trap
 			on = value;
 		}
 	}
+	private List<Creature> creatures = new List<Creature>();
 
 	public override void _Ready () {
 		On = TurnedOnWhenGameLaunched;
 		triggerdelegate = Raise;
+	}
+	public override void _Process (double delta) {
+		if(On && creatures.Count != 0) {
+			KillCreatures();
+		}
+	}
+	private void KillCreatures () {
+		foreach (Creature creature in creatures) {
+			if(creature.CurrentState != Creature.State.DEAD)
+				creature.Kill();
+		}
 	}
 
 	public void Raise () {
@@ -30,9 +44,14 @@ public partial class Spikes : Trap
 
 	public void _on_body_entered (Node2D node) {
 		if (node is Creature) {
-			if(On) {
-				Creature creature = (Creature) node;
-				creature.Kill();
+			creatures.Add((Creature)node);
+		}
+	}
+	public void _on_body_exited (Node2D node) {
+		if (node is Creature) {
+			Creature currentCreature = (Creature) node;
+			if(creatures.Contains(currentCreature)) {
+				creatures.Remove(currentCreature);
 			}
 		}
 	}

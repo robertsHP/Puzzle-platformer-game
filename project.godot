@@ -13,6 +13,7 @@ config_version=5
 config/name="Platformer"
 run/main_scene="res://Scenes/GameScene.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
+boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 config/icon="res://icon.svg"
 
 [dotnet]
@@ -63,4 +64,4 @@ game_reset={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-environment/defaults/default_clear_color=Color(0.113725, 0.113725, 0.113725, 1)
+environment/defaults/default_clear_color=Color(0.490196, 0.290196, 0.152941, 1)

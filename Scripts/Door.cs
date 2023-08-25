@@ -8,7 +8,7 @@ public partial class Door : Area2D {
 	public override void _Process(double delta) {
         if(GameScene.Instance.CurrentState == GameScene.State.DEFAULT) {
             if(player != null) {
-                if (Input.IsActionPressed("player_interact")) {
+                if (Input.IsActionPressed("player_move_up")) {
                     animationPlayer.Play("open");
                     GameScene.Instance.SetWinState();
                 }

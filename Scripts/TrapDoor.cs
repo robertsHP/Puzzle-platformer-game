@@ -3,16 +3,19 @@ using System;
 
 public partial class TrapDoor : Trap {
     [Export] public StaticBody2D staticBody;
-	[Export] public bool open = true;
+	[Export] public bool closed = true;
 
 	public override void _Ready () {
-		triggerdelegate = Open;
+		triggerdelegate = TriggerDoor;
+		if(!closed) {
+			triggerdelegate();
+		}
 	}
 
-	public void Open () {
-		open = !open;
-        staticBody.SetCollisionLayerValue(1, open);
-        staticBody.SetCollisionMaskValue(1, open);
-		sprite.Frame += (open) ? -1 : 1;
+	public void TriggerDoor () {
+		closed = !closed;
+        staticBody.SetCollisionLayerValue(1, closed);
+        staticBody.SetCollisionMaskValue(1, closed);
+		sprite.Frame += (closed) ? -1 : 1;
 	}
 }

@@ -8,9 +8,9 @@ public partial class Bullet : Area2D {
 		}
 	}
 	public void _on_body_entered (Node2D node) {
-		if (node is Player) {
-			Player player = (Player) node;
-			player.Kill();
+		if (node is Creature) {
+			Creature creature = (Creature) node;
+			creature.Kill();
 		} else if(!(node is PlaceHolderStaticBody)) {
 			QueueFree();
 		}
