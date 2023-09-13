@@ -1,25 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bf1mwsve6rmbw"]
+[gd_scene load_steps=9 format=3 uid="uid://bibhan48jeurw"]
 
-[ext_resource type="Script" path="res://Scripts/BlueMonster.cs" id="1_0rhq1"]
-[ext_resource type="Texture2D" uid="uid://d02gls6f1b3qi" path="res://Textures/enemy.png" id="2_8sek6"]
+[ext_resource type="Script" path="res://Scripts/BlueMonster.cs" id="1_kw81u"]
+[ext_resource type="Texture2D" uid="uid://bvp35p8ngt245" path="res://Textures/blue_monster.png" id="2_68pu2"]
 
-[sub_resource type="Animation" id="Animation_o3430"]
-resource_name = "death"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [4, 5, 6, 7]
-}
-
-[sub_resource type="Animation" id="Animation_7xwn8"]
+[sub_resource type="Animation" id="Animation_eov08"]
 resource_name = "walk"
 length = 0.8
 loop_mode = 1
@@ -36,55 +20,70 @@ tracks/0/keys = {
 "values": [1, 0, 2, 3]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_jietv"]
-_data = {
-"death": SubResource("Animation_o3430"),
-"walk": SubResource("Animation_7xwn8")
+[sub_resource type="Animation" id="Animation_vqegc"]
+resource_name = "death"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i684f"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5uspo"]
+_data = {
+"death": SubResource("Animation_vqegc"),
+"walk": SubResource("Animation_eov08")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4p2fw"]
 size = Vector2(10, 14)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjs7i"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4yhyf"]
 size = Vector2(12, 15)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_27vr8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3jnwt"]
 size = Vector2(7, 2)
 
 [node name="BlueMonster" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "animationPlayer", "collisionShape2D")]
-script = ExtResource("1_0rhq1")
+script = ExtResource("1_kw81u")
 sprite = NodePath("Sprite2D")
 animationPlayer = NodePath("Sprite2D/AnimationPlayer")
 moveDirection = 1
 collisionShape2D = NodePath("CollisionShape2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_8sek6")
+texture = ExtResource("2_68pu2")
 hframes = 4
 vframes = 2
 frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
 libraries = {
-"": SubResource("AnimationLibrary_jietv")
+"": SubResource("AnimationLibrary_5uspo")
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_i684f")
-debug_color = Color(0, 0.6, 0.701961, 0.419608)
+shape = SubResource("RectangleShape2D_4p2fw")
 
 [node name="BodyArea2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyArea2D"]
+[node name="BodyCollisionShape2D" type="CollisionShape2D" parent="BodyArea2D"]
 position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_mjs7i")
+shape = SubResource("RectangleShape2D_4yhyf")
 
 [node name="TurnArea2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TurnArea2D"]
+[node name="TurnCollisionShape2D" type="CollisionShape2D" parent="TurnArea2D"]
 position = Vector2(3.5, 0)
-shape = SubResource("RectangleShape2D_27vr8")
+shape = SubResource("RectangleShape2D_3jnwt")
 
 [connection signal="body_entered" from="BodyArea2D" to="." method="_on_body_area_2d_body_entered"]
 [connection signal="body_entered" from="TurnArea2D" to="." method="_on_turn_area_2d_body_entered"]

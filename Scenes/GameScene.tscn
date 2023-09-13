@@ -6,12 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://bib2vir701pva" path="res://PackedScenes/dispenser.tscn" id="3_u671w"]
 [ext_resource type="PackedScene" uid="uid://dmp6ty4ws2nf8" path="res://PackedScenes/ball.tscn" id="3_xngh1"]
 [ext_resource type="PackedScene" uid="uid://5cdl1h6mhvql" path="res://PackedScenes/trap_timer.tscn" id="4_6au4o"]
-[ext_resource type="PackedScene" uid="uid://cia4kkqvhhvqq" path="res://PackedScenes/spikes.tscn" id="5_apnub"]
+[ext_resource type="PackedScene" uid="uid://cia4kkqvhhvqq" path="res://PackedScenes/Spikes.tscn" id="5_apnub"]
 [ext_resource type="PackedScene" uid="uid://g5rsj5pg8rnp" path="res://PackedScenes/player.tscn" id="5_oyhtc"]
 [ext_resource type="PackedScene" uid="uid://x5rirpbi7s7q" path="res://PackedScenes/trap_door.tscn" id="6_hbek1"]
 [ext_resource type="PackedScene" uid="uid://bo3gvuw3bhwe" path="res://PackedScenes/button.tscn" id="7_y1wre"]
 [ext_resource type="PackedScene" uid="uid://v531ldcpaj6q" path="res://PackedScenes/lava.tscn" id="8_7nw3m"]
-[ext_resource type="PackedScene" uid="uid://bf1mwsve6rmbw" path="res://PackedScenes/blue_monster.tscn" id="8_onw78"]
+[ext_resource type="PackedScene" uid="uid://bibhan48jeurw" path="res://PackedScenes/blue_monster.tscn" id="8_onw78"]
 [ext_resource type="PackedScene" uid="uid://w1e3l8opx33o" path="res://PackedScenes/pressure_pad.tscn" id="10_u2b7r"]
 [ext_resource type="PackedScene" uid="uid://carmy20wfeq18" path="res://PackedScenes/1x3_ladder.tscn" id="13_a8qtl"]
 [ext_resource type="PackedScene" uid="uid://lf6r7sl620jm" path="res://PackedScenes/1x2_ladder.tscn" id="14_5vq2b"]
@@ -309,18 +309,19 @@ position = Vector2(360, 184)
 [node name="Entities" type="Node2D" parent="."]
 
 [node name="Player" parent="Entities" instance=ExtResource("5_oyhtc")]
-position = Vector2(360, 40)
+position = Vector2(184, 330)
+JumpVelocity = -200.0
 
 [node name="GreenMonster" parent="Entities" instance=ExtResource("14_f6ath")]
 position = Vector2(326, 200)
 JumpVelocity = -80.0
 
 [node name="BlueMonster" parent="Entities" instance=ExtResource("8_onw78")]
-position = Vector2(33, 72)
+position = Vector2(33, 76)
 Speed = 30.0
 
 [node name="BlueMonster2" parent="Entities" instance=ExtResource("8_onw78")]
-position = Vector2(235, 199)
+position = Vector2(237, 179)
 
 [node name="Door" parent="Entities" instance=ExtResource("18_fptl1")]
 position = Vector2(136, 344)
@@ -338,125 +339,38 @@ position = Vector2(104, 40)
 
 [node name="Lava" type="Node2D" parent="."]
 
-[node name="Lava2" parent="Lava" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("8_7nw3m")]
-position = Vector2(72, 235)
-animationPlayer = NodePath("../Lava/Sprite2D/AnimationPlayer")
+[node name="Lava2" parent="Lava" instance=ExtResource("8_7nw3m")]
+position = Vector2(72, 232)
 
 [node name="Lava" parent="Lava" instance=ExtResource("8_7nw3m")]
-position = Vector2(88, 235)
+position = Vector2(88, 232)
 
 [node name="Lava3" parent="Lava" instance=ExtResource("8_7nw3m")]
-position = Vector2(56, 235)
+position = Vector2(56, 232)
 
 [node name="Lava4" parent="Lava" instance=ExtResource("8_7nw3m")]
-position = Vector2(40, 235)
+position = Vector2(40, 232)
 
 [node name="Lava5" parent="Lava" instance=ExtResource("8_7nw3m")]
-position = Vector2(24, 235)
+position = Vector2(24, 232)
 
 [node name="Lava6" parent="Lava" instance=ExtResource("8_7nw3m")]
-position = Vector2(104, 235)
+position = Vector2(104, 232)
 
 [node name="Lava7" parent="Lava" instance=ExtResource("8_7nw3m")]
-position = Vector2(120, 235)
+position = Vector2(120, 232)
 
 [node name="Lava8" parent="Lava" instance=ExtResource("8_7nw3m")]
-position = Vector2(136, 235)
-
-[node name="Lava10" parent="Lava" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("8_7nw3m")]
-position = Vector2(120, 251)
-animationPlayer = NodePath("../Lava7/Sprite2D/AnimationPlayer")
+position = Vector2(136, 232)
 
 [node name="Lava9" parent="Lava" instance=ExtResource("8_7nw3m")]
 position = Vector2(200, 218)
 
-[node name="Lava11" parent="Lava" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("8_7nw3m")]
-position = Vector2(120, 267)
-animationPlayer = NodePath("../Lava7/Sprite2D/AnimationPlayer")
+[node name="Lava10" parent="Lava" instance=ExtResource("8_7nw3m")]
+position = Vector2(120, 248)
 
-[node name="Lava12" parent="Lava" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("8_7nw3m")]
-position = Vector2(72, 376)
-animationPlayer = NodePath("../Lava/Sprite2D/AnimationPlayer")
-
-[node name="Lava13" parent="Lava" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("8_7nw3m")]
-position = Vector2(88, 376)
-animationPlayer = NodePath("../Lava/Sprite2D/AnimationPlayer")
-
-[node name="Lava14" parent="Lava" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("8_7nw3m")]
-position = Vector2(56, 376)
-animationPlayer = NodePath("../Lava3/Sprite2D/AnimationPlayer")
-
-[node name="Lava15" parent="Lava" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("8_7nw3m")]
-position = Vector2(40, 376)
-animationPlayer = NodePath("../Lava4/Sprite2D/AnimationPlayer")
-
-[node name="Lava16" parent="Lava" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("8_7nw3m")]
-position = Vector2(24, 376)
-animationPlayer = NodePath("../Lava5/Sprite2D/AnimationPlayer")
-
-[node name="Lava17" parent="Lava" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("8_7nw3m")]
-position = Vector2(104, 376)
-animationPlayer = NodePath("../Lava6/Sprite2D/AnimationPlayer")
-
-[node name="Lava18" parent="Lava" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("8_7nw3m")]
-position = Vector2(120, 376)
-animationPlayer = NodePath("../Lava7/Sprite2D/AnimationPlayer")
-
-[node name="Lava19" parent="Lava" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("8_7nw3m")]
-position = Vector2(136, 376)
-animationPlayer = NodePath("../Lava8/Sprite2D/AnimationPlayer")
-
-[node name="Lava20" parent="Lava" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("8_7nw3m")]
-position = Vector2(200, 376)
-animationPlayer = NodePath("../Lava/Sprite2D/AnimationPlayer")
-
-[node name="Lava21" parent="Lava" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("8_7nw3m")]
-position = Vector2(216, 376)
-animationPlayer = NodePath("../Lava/Sprite2D/AnimationPlayer")
-
-[node name="Lava22" parent="Lava" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("8_7nw3m")]
-position = Vector2(184, 376)
-animationPlayer = NodePath("../Lava3/Sprite2D/AnimationPlayer")
-
-[node name="Lava23" parent="Lava" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("8_7nw3m")]
-position = Vector2(168, 376)
-animationPlayer = NodePath("../Lava4/Sprite2D/AnimationPlayer")
-
-[node name="Lava24" parent="Lava" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("8_7nw3m")]
-position = Vector2(152, 376)
-animationPlayer = NodePath("../Lava5/Sprite2D/AnimationPlayer")
-
-[node name="Lava25" parent="Lava" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("8_7nw3m")]
-position = Vector2(232, 376)
-animationPlayer = NodePath("../Lava6/Sprite2D/AnimationPlayer")
-
-[node name="Lava26" parent="Lava" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("8_7nw3m")]
-position = Vector2(248, 376)
-animationPlayer = NodePath("../Lava7/Sprite2D/AnimationPlayer")
-
-[node name="Lava27" parent="Lava" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("8_7nw3m")]
-position = Vector2(264, 376)
-animationPlayer = NodePath("../Lava8/Sprite2D/AnimationPlayer")
-
-[node name="Lava28" parent="Lava" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("8_7nw3m")]
-position = Vector2(328, 376)
-animationPlayer = NodePath("../Lava/Sprite2D/AnimationPlayer")
-
-[node name="Lava29" parent="Lava" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("8_7nw3m")]
-position = Vector2(344, 376)
-animationPlayer = NodePath("../Lava/Sprite2D/AnimationPlayer")
-
-[node name="Lava30" parent="Lava" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("8_7nw3m")]
-position = Vector2(312, 376)
-animationPlayer = NodePath("../Lava3/Sprite2D/AnimationPlayer")
-
-[node name="Lava31" parent="Lava" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("8_7nw3m")]
-position = Vector2(296, 376)
-animationPlayer = NodePath("../Lava4/Sprite2D/AnimationPlayer")
-
-[node name="Lava32" parent="Lava" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("8_7nw3m")]
-position = Vector2(280, 376)
-animationPlayer = NodePath("../Lava5/Sprite2D/AnimationPlayer")
+[node name="Lava11" parent="Lava" instance=ExtResource("8_7nw3m")]
+position = Vector2(120, 264)
 
 [node name="Arrows" type="Node2D" parent="."]
 
@@ -475,3 +389,66 @@ limit_right = 400
 limit_bottom = 400
 script = ExtResource("2_0knap")
 player = NodePath("../Entities/Player")
+
+[node name="Lava2" parent="." instance=ExtResource("8_7nw3m")]
+position = Vector2(24, 376)
+
+[node name="Lava3" parent="." instance=ExtResource("8_7nw3m")]
+position = Vector2(40, 376)
+
+[node name="Lava4" parent="." instance=ExtResource("8_7nw3m")]
+position = Vector2(56, 376)
+
+[node name="Lava5" parent="." instance=ExtResource("8_7nw3m")]
+position = Vector2(72, 376)
+
+[node name="Lava6" parent="." instance=ExtResource("8_7nw3m")]
+position = Vector2(88, 376)
+
+[node name="Lava7" parent="." instance=ExtResource("8_7nw3m")]
+position = Vector2(104, 376)
+
+[node name="Lava8" parent="." instance=ExtResource("8_7nw3m")]
+position = Vector2(120, 376)
+
+[node name="Lava9" parent="." instance=ExtResource("8_7nw3m")]
+position = Vector2(136, 376)
+
+[node name="Lava10" parent="." instance=ExtResource("8_7nw3m")]
+position = Vector2(152, 376)
+
+[node name="Lava11" parent="." instance=ExtResource("8_7nw3m")]
+position = Vector2(168, 376)
+
+[node name="Lava12" parent="." instance=ExtResource("8_7nw3m")]
+position = Vector2(184, 376)
+
+[node name="Lava13" parent="." instance=ExtResource("8_7nw3m")]
+position = Vector2(200, 376)
+
+[node name="Lava14" parent="." instance=ExtResource("8_7nw3m")]
+position = Vector2(216, 376)
+
+[node name="Lava15" parent="." instance=ExtResource("8_7nw3m")]
+position = Vector2(232, 376)
+
+[node name="Lava16" parent="." instance=ExtResource("8_7nw3m")]
+position = Vector2(248, 376)
+
+[node name="Lava17" parent="." instance=ExtResource("8_7nw3m")]
+position = Vector2(264, 376)
+
+[node name="Lava18" parent="." instance=ExtResource("8_7nw3m")]
+position = Vector2(280, 376)
+
+[node name="Lava19" parent="." instance=ExtResource("8_7nw3m")]
+position = Vector2(296, 376)
+
+[node name="Lava20" parent="." instance=ExtResource("8_7nw3m")]
+position = Vector2(312, 376)
+
+[node name="Lava21" parent="." instance=ExtResource("8_7nw3m")]
+position = Vector2(328, 376)
+
+[node name="Lava22" parent="." instance=ExtResource("8_7nw3m")]
+position = Vector2(344, 376)

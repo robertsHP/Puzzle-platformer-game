@@ -1,17 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://c80kimfhi26kf"]
 
-[ext_resource type="Script" path="res://Scripts/Bullet.cs" id="1_rw6d8"]
-[ext_resource type="Texture2D" uid="uid://blxm5kch28nlf" path="res://Textures/bullet.png" id="2_clint"]
+[ext_resource type="Script" path="res://Scripts/Bullet.cs" id="1_hf0je"]
+[ext_resource type="Texture2D" uid="uid://blxm5kch28nlf" path="res://Textures/bullet.png" id="2_mp1w7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_anhx6"]
 size = Vector2(8, 2)
 
 [node name="Bullet" type="Area2D"]
 rotation = 1.57079
-script = ExtResource("1_rw6d8")
+script = ExtResource("1_hf0je")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_clint")
+texture = ExtResource("2_mp1w7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_anhx6")

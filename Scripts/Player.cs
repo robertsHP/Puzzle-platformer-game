@@ -20,6 +20,9 @@ public partial class Player : Creature {
 				case State.DEAD : 	  velocity = HandleDeath(velocity); break;
 				default : 			  velocity = HandleMovement(velocity); break;
 			}
+		} else {
+			if(velocity.X != 0)
+				velocity.X = 0;
 		}
 		Velocity = velocity;
 		MoveAndSlide();

@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://bib2vir701pva"]
 
-[ext_resource type="Script" path="res://Scripts/Dispenser.cs" id="1_vhts7"]
-[ext_resource type="PackedScene" path="res://PackedScenes/bullet.tscn" id="2_guswp"]
-[ext_resource type="Texture2D" uid="uid://dh38af0o0soky" path="res://Textures/dispenser.png" id="3_i26qc"]
-[ext_resource type="Script" path="res://Scripts/PlaceHolderStaticBody.cs" id="4_ncuae"]
+[ext_resource type="Script" path="res://Scripts/Dispenser.cs" id="1_jil40"]
+[ext_resource type="PackedScene" uid="uid://c80kimfhi26kf" path="res://PackedScenes/bullet.tscn" id="2_14ss2"]
+[ext_resource type="Texture2D" uid="uid://dh38af0o0soky" path="res://Textures/dispenser.png" id="3_hvlvh"]
+[ext_resource type="Script" path="res://Scripts/PlaceHolderStaticBody.cs" id="4_5cvjg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qnc8r"]
 size = Vector2(16, 16)
@@ -12,18 +12,18 @@ size = Vector2(16, 16)
 size = Vector2(16, 16)
 
 [node name="Dispenser" type="Area2D" node_paths=PackedStringArray("sprite")]
-script = ExtResource("1_vhts7")
-packedScene = ExtResource("2_guswp")
+script = ExtResource("1_jil40")
+packedScene = ExtResource("2_14ss2")
 sprite = NodePath("Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qnc8r")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_i26qc")
+texture = ExtResource("3_hvlvh")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-script = ExtResource("4_ncuae")
+script = ExtResource("4_5cvjg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_yj18c")

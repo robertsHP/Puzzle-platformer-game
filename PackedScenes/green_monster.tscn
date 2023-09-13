@@ -76,13 +76,13 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="BodyArea2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyArea2D"]
+[node name="BodyCollisionShape2D" type="CollisionShape2D" parent="BodyArea2D"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_a18u8")
 
 [node name="TurnArea2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TurnArea2D"]
+[node name="TurnCollisionShape2D" type="CollisionShape2D" parent="TurnArea2D"]
 position = Vector2(3.5, 0)
 shape = SubResource("RectangleShape2D_ejhej")
 
